@@ -11,8 +11,8 @@ exports.user_create = function (req, res) {
         {
             username: req.body.username,
             password: req.body.password,
-            status: req.body.status,
-            level: req.body.level,
+            status  : req.body.status,
+            level   : req.body.level,
         }
     );
     user.save(function (err) {
