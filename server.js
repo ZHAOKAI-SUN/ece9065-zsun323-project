@@ -1,29 +1,33 @@
-//server.js
+require('./config/config');
+require('./models/db');
+require('./config/passportConfig');
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+const passport = require('passport');
 
-const user = require('./routes/user.route'); // Imports routes for user
-const song = require('./routes/song.route'); // Imports routes for song
-const app = express();
+const rtsIndex = require('./routes/index.router');
 
-// Set up mongoose connection
-const mongoose = require('mongoose');
-let dev_db_url = 'mongodb+srv://musicadmin:abcd1234@cluster0-qrdby.mongodb.net/MUSIC';
+var app = express();
 
-const mongoDB = process.env.MONGODB_URI || dev_db_url;
-mongoose.connect(mongoDB);
-mongoose.Promise = global.Promise;
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
+// middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-app.use('/users', user); // Set app for user
-app.use('/songs', song); // Set app for song
+app.use(cors());
+app.use(passport.initialize());
+app.use('/api', rtsIndex);
 
-let port = 8080;
-
-app.listen(port, () => {
-    console.log('Server is up and running on port numner ' + port);
+// error handler
+app.use((err, req, res, next) => {
+    if (err.name === 'ValidationError') {
+        var valErrors = [];
+        Object.keys(err.errors).forEach(key => valErrors.push(err.errors[key].message));
+        res.status(422).send(valErrors)
+    }
+    else{
+        console.log(err);
+    }
 });
+
+// start server
+app.listen(process.env.PORT, () => console.log(`Server started at port : ${process.env.PORT}`));

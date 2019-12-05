@@ -1,56 +1,45 @@
-const User = require('../models/user.model');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const _ = require('lodash');
 
-//Simple version, without validation or sanitation
-exports.test = function (req, res) {
-    res.send('Greetings from the Test controller!');
-};
+const User = mongoose.model('User');
 
-// CREATE
-exports.user_create = function (req, res) {
-    let user = new User(
-        {
-            username: req.body.username,
-            password: req.body.password,
-            status  : req.body.status,
-            level   : req.body.level,
+module.exports.register = (req, res, next) => {
+    var user = new User();
+    user.fullName = req.body.fullName;
+    user.email = req.body.email;
+    user.password = req.body.password;
+    user.save((err, doc) => {
+        if (!err)
+            res.send(doc);
+        else {
+            if (err.code == 11000)
+                res.status(422).send(['Duplicate email adrress found.']);
+            else
+                return next(err);
+        }
+    });
+}
+
+module.exports.authenticate = (req, res, next) => {
+    // call for passport authentication
+    passport.authenticate('local', (err, user, info) => {       
+        // error from passport middleware
+        if (err) return res.status(400).json(err);
+        // registered user
+        else if (user) return res.status(200).json({ "token": user.generateJwt() });
+        // unknown user or wrong password
+        else return res.status(404).json(info);
+    })(req, res);
+}
+
+module.exports.userProfile = (req, res, next) =>{
+    User.findOne({ _id: req._id },
+        (err, user) => {
+            if (!user)
+                return res.status(404).json({ status: false, message: 'User record not found.' });
+            else
+                return res.status(200).json({ status: true, user : _.pick(user,['fullName','email']) });
         }
     );
-    user.save(function (err) {
-        if (err) {
-            return next(err);
-        }
-        res.send('User Created successfully')
-    })
-};
-
-// READ all
-exports.user_read = function (req, res) {
-    User.find(function (err, user) {
-        if (err) return next(err);
-        res.send(user);
-    })
-};
-
-// READ one by ID
-exports.user_details = function (req, res) {
-    User.findById(req.params.id, function (err, user) {
-        if (err) return next(err);
-        res.send(user);
-    })
-};
-
-// UPDATE
-exports.user_update = function (req, res) {
-    User.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, user) {
-        if (err) return next(err);
-        res.send('User udpated.');
-    });
-};
-
-// DELETE
-exports.user_delete = function (req, res) {
-    User.findByIdAndRemove(req.params.id, function (err) {
-        if (err) return next(err);
-        res.send('Deleted successfully!');
-    })
-};
+}
