@@ -3,10 +3,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 var userSchema = new mongoose.Schema({
-    fullName: {
-        type: String,
-        required: 'Full name can\'t be empty'
-    },
     email: {
         type: String,
         required: 'Email can\'t be empty',
@@ -16,6 +12,14 @@ var userSchema = new mongoose.Schema({
         type: String,
         required: 'Password can\'t be empty',
         minlength: [6, 'Password must be atleast 6 character long']
+    },
+    status: { // 3 options: Normal, Locked, Not-active
+        type: String,
+        required: 'Status name can\'t be empty'
+    },
+    level: { // 2 options: Normal, Admin
+        type: String,
+        required: 'Level name can\'t be empty'
     },
     saltSecret: String
 });
@@ -36,7 +40,6 @@ userSchema.pre('save', function (next) {
         });
     });
 });
-
 
 // Methods
 userSchema.methods.verifyPassword = function (password) {
