@@ -13,6 +13,8 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 
 //routes
 import { appRoutes } from './routes';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
 
 // Add Module
 @NgModule({
@@ -21,7 +23,9 @@ import { appRoutes } from './routes';
     AboutComponent,
     HomeComponent,
     UserComponent,
-    SignUpComponent
+    SignUpComponent,
+    UserProfileComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
