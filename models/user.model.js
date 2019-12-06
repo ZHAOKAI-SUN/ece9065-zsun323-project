@@ -15,13 +15,11 @@ var userSchema = new mongoose.Schema({
     },
     status: { // 3 options: Normal, Locked, Not-active
         type: String,
-        required: 'Status name can\'t be empty',
-        default: 'Not-active'
+        required: 'Status name can\'t be empty'
     },
     level: { // 2 options: Normal, Admin
         type: String,
-        required: 'Level name can\'t be empty',
-        default: 'Normal'
+        required: 'Level name can\'t be empty'
     },
     saltSecret: String
 });

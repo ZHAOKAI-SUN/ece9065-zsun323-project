@@ -44,8 +44,8 @@ export class SignUpComponent implements OnInit {
     this.userService.selectedUser = {
       email: '',
       password: '',
-      status: 'Not-active',
-      level: 'Normal',
+      status: '',
+      level: '',
     };
     form.resetForm();
     this.serverErrorMessages = '';

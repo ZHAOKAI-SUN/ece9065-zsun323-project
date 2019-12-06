@@ -6,10 +6,12 @@ const User = mongoose.model('User');
 
 module.exports.register = (req, res, next) => {
     var user = new User();
+    
     user.email = req.body.email;
     user.password = req.body.password;
     user.status = req.body.status;
     user.level = req.body.level;
+
     user.save((err, doc) => {
         if (!err)
             res.send(doc);
