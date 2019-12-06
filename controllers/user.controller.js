@@ -15,7 +15,7 @@ module.exports.register = (req, res, next) => {
             res.send(doc);
         else {
             if (err.code == 11000)
-                res.status(422).send(['Duplicate email adrress found.']);
+                res.status(422).send(['This email has been registered.']);
             else
                 return next(err);
         }
