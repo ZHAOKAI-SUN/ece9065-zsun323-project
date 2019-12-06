@@ -1,24 +1,33 @@
+// Built-in
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+// Add Component
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { UserComponent } from './user/user.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
 
+//routes
+import { appRoutes } from './routes';
+
+// Add Module
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
-    RegisterComponent,
-    LoginComponent,
-    HomeComponent
+    HomeComponent,
+    UserComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

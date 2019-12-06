@@ -1,0 +1,37 @@
+<form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+
+
+    <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" placeholder="Email"
+    required [pattern]="emailRegex"  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
+
+    <div *ngIf="signUpForm.submitted && email.errors">
+      <label *ngIf="email.errors.required" class="validation-message">This info is required</label>
+      <label *ngIf="email.errors.pattern" class="validation-message">Invalid email</label>
+    </div>
+
+
+    <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Password"
+    minlength="6" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }">
+
+    <div *ngIf="signUpForm.submitted && password.errors">
+      <label *ngIf="password.errors.required" class="validation-message">This info is required</label>
+      <label *ngIf="password.errors.minlength" class="validation-message">At least 6 characters</label>
+    </div>
+
+    <input type="text" #status="ngModel" [(ngModel)]="userService.selectedUser.status" name="status" value="Not-active">
+    <input type="text" #level="ngModel" [(ngModel)]="userService.selectedUser.level" name="level" value="Normal">
+    
+    <input type="submit" value="Register">
+
+
+  </form>
+
+<!-- Success message -->
+<div class="success" *ngIf="showSucessMessage">
+  Account created successfull
+</div>
+  
+<!-- Error message -->
+<div class="alert" *ngIf="serverErrorMessages">
+  {{serverErrorMessages}}
+</div>
