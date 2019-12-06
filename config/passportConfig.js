@@ -11,13 +11,13 @@ passport.use(
                 (err, user) => {
                     if (err)
                         return done(err);
-                    // unknown user
+                    // If the email does not exist
                     else if (!user)
-                        return done(null, false, { message: 'Email is not registered' });
-                    // wrong password
+                        return done(null, false, { message: 'This email is not registered!' });
+                    // If the password is wrong
                     else if (!user.verifyPassword(password))
-                        return done(null, false, { message: 'Wrong password.' });
-                    // authentication succeeded
+                        return done(null, false, { message: 'Wrong password!' });
+                    // Authorized success
                     else
                         return done(null, user);
                 });
