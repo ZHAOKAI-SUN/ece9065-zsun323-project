@@ -9,8 +9,8 @@ module.exports.register = (req, res, next) => {
     
     user.email = req.body.email;
     user.password = req.body.password;
-    user.status = req.body.status;
-    user.level = req.body.level;
+    user.status = "Not-active";
+    user.level = "Normal";
 
     user.save((err, doc) => {
         if (!err)

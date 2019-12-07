@@ -18,16 +18,13 @@
       <label *ngIf="password.errors.minlength" class="validation-message">At least 6 characters</label>
     </div>
 
-    <input type="text" #status="ngModel" [(ngModel)]="userService.selectedUser.status" name="status" value="Not-active">
-    <input type="text" #level="ngModel" [(ngModel)]="userService.selectedUser.level" name="level" value="Normal">
-    
     <input type="submit" value="Register">
 
   </form>
 
 <!-- Success message -->
 <div class="success" *ngIf="showSucessMessage">
-  Account created successfull
+  Account created successfully!
 </div>
   
 <!-- Error message -->
