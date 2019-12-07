@@ -10,10 +10,11 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { NotLogInComponent } from './not-log-in/not-log-in.component';
 //routes
 import { appRoutes } from './routes';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { SignInComponent } from './user/sign-in/sign-in.component';
 import { UserService } from './shared/user.service';
 //other
 import { AuthGuard } from './auth/auth.guard';
@@ -28,7 +29,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     UserComponent,
     SignUpComponent,
     UserProfileComponent,
-    SignInComponent
+    SignInComponent,
+    NotLogInComponent
   ],
   imports: [
     BrowserModule,
