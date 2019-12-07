@@ -17,6 +17,12 @@ passport.use(
                     // If the password is wrong
                     else if (!user.verifyPassword(password))
                         return done(null, false, { message: 'Wrong password!' });
+                    // If the account is not activated (email activation)
+                    else if (user.status == "Not-active")
+                        return done(null, false, { message: 'User not activated!' });
+                    // If the account is locked
+                    else if (user.status == "Locked")
+                        return done(null, false, { message: 'Your account is locked, please contact the administrator!' });
                     // Authorized success
                     else
                         return done(null, user);
