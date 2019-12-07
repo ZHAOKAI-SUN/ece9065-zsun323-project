@@ -22,7 +22,7 @@ passport.use(
                         return done(null, false, { message: 'User not activated!' });
                     // If the account is locked
                     else if (user.status == "Locked")
-                        return done(null, false, { message: 'Your account is locked, please contact the administrator!' });
+                        return done(null, false, { message: 'Your account is locked.<br><br>Please contact the administrator!' });
                     // Authorized success
                     else
                         return done(null, user);

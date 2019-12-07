@@ -21,4 +21,6 @@
   <!-- Error message -->
 <div class="alert" *ngIf="serverErrorMessages">
     {{serverErrorMessages}}
+    <br>
+    <button *ngIf="serverErrorMessages=='User not activated!'">sss</button>
 </div>
