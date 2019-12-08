@@ -9,5 +9,6 @@ router.post('/register', ctrlUser.register);
 router.post('/authenticate', ctrlUser.authenticate);
 router.get('/userProfile',jwtHelper.verifyJwtToken, ctrlUser.userProfile); // private route !!! add: verifyJwtToken !!!!!
 router.get('/activate/:token', ctrlUser.activateUser); // Activate email
+router.post('/resend', ctrlUser.resend);
 
 module.exports = router;

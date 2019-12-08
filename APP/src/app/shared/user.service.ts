@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 
 // Step 2: add model to service
 import { User } from './user.model';
+import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,9 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-   //HttpMethods
+
+////// HttpMethods //////
+
 
   postUser(user: User){
     return this.http.post(environment.apiBaseUrl+'/register',user,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
@@ -37,7 +40,15 @@ export class UserService {
     return this.http.get(environment.apiBaseUrl + '/userProfile');
   }
 
-  //Helper Methods
+  // Resend verification email
+  resend(form:NgForm) {
+    return this.http.post(environment.apiBaseUrl + '/resend', form,this.noAuthHeader)
+    
+  }
+
+
+////// Helper Methods //////
+
 
   setToken(token: string) {
     localStorage.setItem('token', token);

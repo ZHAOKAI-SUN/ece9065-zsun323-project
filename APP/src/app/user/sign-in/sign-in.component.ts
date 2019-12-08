@@ -38,4 +38,15 @@ export class SignInComponent implements OnInit {
     );
   }
 
+  ReSend(form : NgForm){
+    this.userService.resend(form.value).subscribe(
+      res => {
+        this.serverErrorMessages = "Already resend email !";
+      },
+      err => {
+
+      }
+    );
+  }
+
 }
