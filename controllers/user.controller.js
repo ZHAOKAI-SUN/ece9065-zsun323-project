@@ -8,8 +8,8 @@ var sgTransport = require('nodemailer-sendgrid-transport'); // Import Nodemailer
 // Set authorization for active email
 var options = {
     auth: {
-        api_user: 'Huangyh', // Sendgrid username
-        api_key: 'sendgridHYH961122' // Sendgrid password
+        api_user: 'zsun323', // Sendgrid username
+        api_key: 'Szk1sc2019!' // Sendgrid password
     }
 }
 var client = nodemailer.createTransport(sgTransport(options));

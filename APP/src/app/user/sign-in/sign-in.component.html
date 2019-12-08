@@ -20,7 +20,13 @@
   
   <!-- Error message -->
 <div class="alert" *ngIf="serverErrorMessages">
+  
     {{serverErrorMessages}}
     <br>
-    <button *ngIf="serverErrorMessages=='User not activated!'" (click)="ReSend(signInForm)">Resend Email</button>
+    <div *ngIf="serverErrorMessages=='User not activated!'">Haven't received the email yet?</div>
+
+    <form #ReSendForm="ngForm" *ngIf="serverErrorMessages=='User not activated!'" (ngSubmit)="ReSend(signInForm)">
+      <input type="submit" value="Resend Email">
+    </form>
+
 </div>
