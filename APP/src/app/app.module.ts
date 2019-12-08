@@ -13,16 +13,31 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NotLogInComponent } from './not-log-in/not-log-in.component';
-//routes
+import { SignInG3rdComponent } from './user/sign-in-g3rd/sign-in-g3rd.component';
+// Routes
 import { appRoutes } from './routes';
+// Services
 import { UserService } from './shared/user.service';
-//other
+// Other
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'ng4-social-login'; // 3rd log in
+
+//3 party
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('1014484554576-6b96ie10lcsgfqh3efhl12qhct1abgj6.apps.googleusercontent.com')
+  }
+], false);
+export function provideConfig() {
+  return config;
+}
+
 
 // Add Module
 @NgModule({
-  declarations: [
+  declarations: [    //// declarations start
     AppComponent,
     AboutComponent,
     HomeComponent,
@@ -30,19 +45,31 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     SignUpComponent,
     UserProfileComponent,
     SignInComponent,
-    NotLogInComponent
-  ],
-  imports: [
+    NotLogInComponent,
+    SignInG3rdComponent
+  ],//STOP
+  imports: [    //// imports start
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
-  ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  },AuthGuard,UserService],
-  bootstrap: [AppComponent]
+    HttpClientModule,
+    SocialLoginModule
+  ],//STOP
+  providers: [    //// providers start
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide:AuthServiceConfig,
+      useFactory: provideConfig
+    },
+    AuthGuard,
+    UserService
+  ],//STOP
+  bootstrap: [    //// bootstrap start
+    AppComponent
+  ]//STOP
 })
 export class AppModule { }

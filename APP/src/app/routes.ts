@@ -7,6 +7,7 @@ import { AboutComponent } from './about/about.component';
 import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
+import { SignInG3rdComponent } from './user/sign-in-g3rd/sign-in-g3rd.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NotLogInComponent } from './not-log-in/not-log-in.component';
 
@@ -25,8 +26,11 @@ export const appRoutes: Routes = [
     { path: 'login', component: UserComponent,
         children: [{ path: '', component: SignInComponent }]},
 
+    { path: 'login3rd', component: UserComponent,
+        children: [{ path: '', component: SignInG3rdComponent }]},
+
     { path: 'userprofile', component: UserProfileComponent,canActivate:[AuthGuard] }, // No access without login, add: canActivate:[AuthGuard] !!!!!!!!!!!!!!!!!!
 
-    { path: 'notlogin', component: NotLogInComponent },
+    { path: 'notlogin', component: NotLogInComponent }, // Account not logged in, automatically jump to this path  !!!!!!!!!!!!!!!!!!
 
 ];
