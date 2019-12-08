@@ -1,19 +1,58 @@
 <div class="container-fluid">
     <div class="row" style="text-align: -webkit-center">
 
+        <br/><br/>
+
         <div class="col-md-12">
-            <h2><p>Social Logins</p></h2>
-            <button class="btn btn-primary" style="background-color: #c63d2d; border-color: #c63d2d" (click)="googlelogin()"><i class="fa fa-google"></i>Google</button>
+            <button (click)="googlelogin()"><i class="fa fa-google"></i>
+                <img src="assets/image/googlelogo.png">
+            </button>
         </div>
         
+        <br/><br/>
+        
         <div class="col-md-12" style="text-align: -webkit-center">
+
             <div class="card" style="width: 20rem; margin: 20px 0 24px 0; text-align: -webkit-center" *ngIf="user.photoUrl">
+
                 <img [src]="user.photoUrl" alt="image" style="width: 200px; border-radius: 50%; margin-top: 10px">
                 <div class="card-body">
                     <h4 class="card-title">{{user.name}}</h4>
                     <p class="card-text">{{user.email}}</p>
                 </div>
+
+                <!-- ↓ sign-up part ↓ -->
+
+                <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+                    
+                    <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Password"
+                    minlength="6" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }">
+                    
+                    
+                    <div *ngIf="signUpForm.submitted && password.errors">
+                        <label *ngIf="password.errors.required" class="validation-message">This info is required</label>
+                        <label *ngIf="password.errors.minlength" class="validation-message">At least 6 characters</label>
+                    </div>
+                    
+                    <input type="submit" value="Register">
+                
+                </form>
+                    
+                    <!-- Success message -->
+                    <div class="success" *ngIf="showSucessMessage">
+                      Account created successfully! <br>
+                      Please check email to activate account!
+                    </div>
+                      
+                    <!-- Error message -->
+                    <div class="alert" *ngIf="serverErrorMessages">
+                      {{serverErrorMessages}}
+                    </div>
+                
+                <!-- ↑ sign-up part ↑ -->
+
             </div>
+
         </div>
 
     </div>
