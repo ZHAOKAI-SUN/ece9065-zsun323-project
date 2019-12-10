@@ -1,4 +1,6 @@
-const Song = require('../models/song.model');
+const mongoose = require('mongoose');
+
+const Song = mongoose.model('Song');
 
 //Simple version, without validation or sanitation
 exports.test = function (req, res) {
@@ -6,32 +8,40 @@ exports.test = function (req, res) {
 };
 
 // CREATE
-exports.song_create = function (req, res) {
-    let song = new Song(
-        {
-            header : req.body.header,
-            title  : req.body.title,
-            artist : req.body.artist,
-            album  : req.body.album,
-            year   : req.body.year,
-            comment: req.body.comment,
-            reserve: req.body.reserve,
-            track  : req.body.track,
-            genre  : req.body.genre,
-            nor    : req.body.nor,
-            ar     : req.body.ar,
-            status : req.body.status,
-            addname: req.body.addname,
-            addtime: req.body.addtime,
+module.exports.song_create = (req, res, next) => {
+    var song = new Song();
+
+    // ↓ ID3V1 Attributes
+    song.header = "TAG"; // In ID3V1, always "TAG"
+    song.title  = req.body.title;
+    song.artist = req.body.artist;
+    song.album  = req.body.album;
+    song.year   = req.body.year;
+    song.comment= req.body.comment;
+    song.reserve= "0"; // Reserved attribute.  Default value: "0"
+    song.track  = req.body.track; // Number of this song in the album
+    song.genre  = req.body.genre; // Song style
+    // ↓ Website Attributes
+    song.nor    = "0"; // Number of reviews. Default value: "0"
+    song.ar     = "0";     // Number of reviews. Default value: "0"
+    song.status = "Normal";  // Default value: "Normal". Can be changed to "Hidden" by the admin
+    song.addname= req.body.addname;
+    song.addtime= Date();
+
+    song.save((err, doc) => {
+        if (!err) {
+            res.send(doc);
         }
-    );
-    song.save(function (err) {
-        if (err) {
-            return next(err);
-        }
-        res.send('Song Created successfully')
-    })
-};
+        else {
+            if (err.code == 11000)
+                res.status(422).send(['This song already exists!']);
+            else
+                return next(err);
+            }
+    });
+}
+
+
 
 // READ all
 exports.song_read = function (req, res) {
