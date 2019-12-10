@@ -28,6 +28,8 @@ router.get('/readallSong', song_controller.song_read);
 router.get('/:id/readSong', song_controller.song_details);
 // READ TOP 10
 router.get('/readTOP10', song_controller.song_top10);
+// SEARCH
+router.get('/searchSong/:id', song_controller.song_search);
 // UPDATE
 router.put('/:id/updateSong', song_controller.song_update);
 // DELETE

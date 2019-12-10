@@ -56,9 +56,10 @@ module.exports.song_top10 = (req, res, next) => {
         console.log(song);
         for (var i = 0; i < song.length; i++) {
             var searchSong = {
-                // ↓ ID3V1 Attributes
+                // ↓ Primary keys
                 TOP: i+1,
                 ID: song[i]._id,
+                // ↓ ID3V1 Attributes
                 Header: song[i].header,
                 Title: song[i].title,
                 Artist: song[i].artist,
@@ -78,6 +79,59 @@ module.exports.song_top10 = (req, res, next) => {
             array.push(searchSong);
         }
         return res.status(200).send(array);
+    })
+};
+
+// SEARCH
+module.exports.song_search = (req, res, next) => {
+    var array = new Array();
+    var word  = req.params.id;
+    word = word.replace(/\s/g, "");
+    console.log(word);
+
+    var _filter = {
+        $or: [
+            { title: { $regex: word, $options: '$i'} },
+            { artist: { $regex: word, $options: '$i'} },
+            { album: { $regex: word, $options: '$i'} },
+            { year: { $regex: word, $options: '$i'} },
+            { comment: { $regex: word, $options: '$i'} },
+            { reserve: { $regex: word, $options: '$i'} },
+            { track: { $regex: word, $options: '$i'} },
+            { genre: { $regex: word, $options: '$i'} }
+        ]
+    }
+
+    Song.find(_filter, (err, song) => {
+        if (!song) {
+            return res.status(404).json({ status: false, message: "No search results"});
+        } else {
+            for (var i = 0; i < song.length; i++) {
+                var searchSong = {
+                    // ↓ Primary keys
+                    TOP: i+1,
+                    ID: song[i]._id,
+                    // ↓ ID3V1 Attributes
+                    title: song[i].title,
+                    artist: song[i].artist,
+                    album: song[i].album,
+                    year: song[i].year,
+                    comment: song[i].comment,
+                    reserve: song[i].reserve,
+                    track: song[i].track,
+                    genre: song[i].genre,
+                    // ↓ Website Attributes
+                    NOR: song[i].nor,
+                    AR: song[i].ar,
+                    status: song[i].status,
+                    addname: song[i].addname,
+                    addtime: song[i].addtime
+                };
+                array.push(searchSong);
+            }
+            console.log(array);
+            return res.status(200).send(array);
+        }
     })
 };
 
