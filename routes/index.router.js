@@ -26,6 +26,8 @@ router.post('/createSong', song_controller.song_create);
 router.get('/readallSong', song_controller.song_read);
 // READ one by ID
 router.get('/:id/readSong', song_controller.song_details);
+// READ TOP 10
+router.get('/readTOP10', song_controller.song_top10);
 // UPDATE
 router.put('/:id/updateSong', song_controller.song_update);
 // DELETE

@@ -49,6 +49,38 @@ exports.song_read = function (req, res) {
     })
 };
 
+// READ TOP 10
+module.exports.song_top10 = (req, res, next) => {
+    var array = new Array();
+    Song.find().sort({ Nor: -1}).limit(10).then((song) => {
+        console.log(song);
+        for (var i = 0; i < song.length; i++) {
+            var searchSong = {
+                // ↓ ID3V1 Attributes
+                TOP: i+1,
+                ID: song[i]._id,
+                Header: song[i].header,
+                Title: song[i].title,
+                Artist: song[i].artist,
+                Album: song[i].album,
+                Year: song[i].year,
+                Comment: song[i].comment,
+                Reserve: song[i].reserve,
+                Track: song[i].track,
+                Genre: song[i].genre,
+                // ↓ Website Attributes
+                Nor: song[i].nor,
+                Ar: song[i].ar,
+                Status: song[i].status,
+                Addname: song[i].addname,
+                Addtime: song[i].addtime
+            };
+            array.push(searchSong);
+        }
+        return res.status(200).send(array);
+    })
+};
+
 // READ one by ID
 exports.song_details = function (req, res) {
     Song.findById(req.params.id, function (err, song) {
