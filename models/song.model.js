@@ -46,11 +46,11 @@ var songSchema = new mongoose.Schema({
         maxlength: [20, 'Song genre is up to 20 character!']
     },
     nor: {
-        type: Number,
+        type: String,
         required: 'NOR can\'t be empty'
     },
     ar: {
-        type: Number,
+        type: String,
         required: 'AR can\'t be empty'
     },
     status: {
