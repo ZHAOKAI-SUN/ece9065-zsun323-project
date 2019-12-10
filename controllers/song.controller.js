@@ -22,8 +22,8 @@ module.exports.song_create = (req, res, next) => {
     song.track  = req.body.track; // Number of this song in the album
     song.genre  = req.body.genre; // Song style
     // ↓ Website Attributes
-    song.nor    = "0"; // Number of reviews. Default value: "0"
-    song.ar     = "0";     // Number of reviews. Default value: "0"
+    song.nor    = 0; // Number of reviews. Default value: "0"
+    song.ar     = 0;     // Number of reviews. Default value: "0"
     song.status = "Normal";  // Default value: "Normal". Can be changed to "Hidden" by the admin
     song.addname= req.body.addname;
     song.addtime= Date();
@@ -40,8 +40,6 @@ module.exports.song_create = (req, res, next) => {
             }
     });
 }
-
-
 
 // READ all
 exports.song_read = function (req, res) {

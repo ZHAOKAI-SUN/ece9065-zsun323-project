@@ -22,7 +22,14 @@ router.post('/resend', ctrlUser.resend);
 router.get('/testSong', song_controller.test);
 // CREATE
 router.post('/createSong', song_controller.song_create);
-
+// READ all
+router.get('/readallSong', song_controller.song_read);
+// READ one by ID
+router.get('/:id/readSong', song_controller.song_details);
+// UPDATE
+router.put('/:id/updateSong', song_controller.song_update);
+// DELETE
+router.delete('/:id/deleteSong', song_controller.song_delete);
 
 
 
