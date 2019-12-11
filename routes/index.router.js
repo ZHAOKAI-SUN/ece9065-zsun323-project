@@ -11,29 +11,29 @@ const song_controller = require('../controllers/song.controller');
 ////// 2 : Add router path
 
 //// User part
-router.post('/register', ctrlUser.register);
-router.post('/authenticate', ctrlUser.authenticate);
-router.get('/userProfile',jwtHelper.verifyJwtToken, ctrlUser.userProfile); // private route !!! add: verifyJwtToken !!!!!
-router.get('/activate/:token', ctrlUser.activateUser); // Activate email
-router.post('/resend', ctrlUser.resend);
+router.post     ('/user/open/register', ctrlUser.register);
+router.post     ('/user/open/authenticate', ctrlUser.authenticate);
+router.get      ('/user/secure/userProfile',jwtHelper.verifyJwtToken, ctrlUser.userProfile); // private route !!! add: verifyJwtToken !!!!!
+router.get      ('/user/open/activate/:token', ctrlUser.activateUser); // Activate email
+router.post     ('/user/open/resend', ctrlUser.resend);
 
 //// Sony part
 // TEST
-router.get('/testSong', song_controller.test);
+router.get      ('/song/open/testSong', song_controller.test);
 // CREATE
-router.post('/createSong', song_controller.song_create);
+router.post     ('/song/secure/createSong', song_controller.song_create);
 // READ all
-router.get('/readallSong', song_controller.song_read);
+router.get      ('/song/open/readallSong', song_controller.song_read);
 // READ one by ID
-router.get('/:id/readSong', song_controller.song_details);
+router.get      ('/song/open/:id/readSong', song_controller.song_details);
 // READ TOP 10
-router.get('/readTOP10', song_controller.song_top10);
+router.get      ('/song/open/readTOP10', song_controller.song_top10);
 // SEARCH
-router.get('/searchSong/:id', song_controller.song_search);
+router.get      ('/song/open/searchSong/:id', song_controller.song_search);
 // UPDATE
-router.put('/:id/updateSong', song_controller.song_update);
+router.put      ('/song/secure/:id/updateSong', song_controller.song_update);
 // DELETE
-router.delete('/:id/deleteSong', song_controller.song_delete);
+router.delete   ('/song/secure/:id/deleteSong', song_controller.song_delete);
 
 
 

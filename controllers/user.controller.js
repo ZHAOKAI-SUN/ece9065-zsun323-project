@@ -34,7 +34,7 @@ module.exports.register = (req, res, next) => {
                 to: user.email,
                 subject: 'Account Activation Email - Tony Music',
                 text: 'Thank you for being TONY MUSIC member!',
-                html:  'Hi, dear ' + user.email + ' :<br><br>Thank you for registering our website. Please click the following link to activate your account :<br><br><a href="http://localhost:8080/api/activate/' + user.email + '">Please click on me!</a>'
+                html:  'Hi, dear ' + user.email + ' :<br><br>Thank you for registering our website. Please click the following link to activate your account :<br><br><a href="http://localhost:8080/api/user/open/activate/' + user.email + '">Please click on me!</a>'
             };
             client.sendMail(email, function(err, info) {
                 if (err) console.log(err);
@@ -91,7 +91,7 @@ module.exports.resend = (req, res, next) =>{
         to: req.body.email,
         subject: 'Account Activation Email - Tony Music',
         text: 'Thank you for being TONY MUSIC member!',
-        html:  'Hi, dear ' + req.body.email + ' :<br><br>Thank you for registering our website. Please click the following link to activate your account :<br><br><a href="http://localhost:8080/api/activate/' + req.body.email + '">Please click on me!</a>'
+        html:  'Hi, dear ' + req.body.email + ' :<br><br>Thank you for registering our website. Please click the following link to activate your account :<br><br><a href="http://localhost:8080/api/user/open/activate/' + req.body.email + '">Please click on me!</a>'
     };
     client.sendMail(email, function(err, info) {
         if (err) console.log(err);
