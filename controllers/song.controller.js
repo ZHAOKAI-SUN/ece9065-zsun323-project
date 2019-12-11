@@ -22,11 +22,12 @@ module.exports.song_create = (req, res, next) => {
     song.track  = req.body.track; // Number of this song in the album
     song.genre  = req.body.genre; // Song style
     // ↓ Website Attributes
-    song.nor    = "0"; // Number of reviews. Default value: "0"
+    song.nor    =  0 ; // Number of reviews. Default value: "0"
     song.ar     = "0";     // Number of reviews. Default value: "0"
     song.status = "Normal";  // Default value: "Normal". Can be changed to "Hidden" by the admin
     song.addname= req.body.addname;
     song.addtime= Date();
+    song.title0artist= req.body.title+"0"+req.body.artist;
 
     song.save((err, doc) => {
         if (!err) {
@@ -52,7 +53,7 @@ exports.song_read = function (req, res) {
 // READ TOP 10
 module.exports.song_top10 = (req, res, next) => {
     var array = new Array();
-    Song.find().sort({ Nor: -1}).limit(10).then((song) => {
+    Song.find().sort({ nor: -1}).limit(10).then((song) => {
         console.log(song);
         for (var i = 0; i < song.length; i++) {
             var searchSong = {
