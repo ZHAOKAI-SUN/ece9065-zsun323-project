@@ -104,7 +104,8 @@ module.exports.song_search = (req, res, next) => {
     }
 
     Song.find(_filter, (err, song) => {
-        if (!song) {
+        console.log(song);
+        if (song.length==0) {
             return res.status(404).json({ status: false, message: "No search results"});
         } else {
             for (var i = 0; i < song.length; i++) {
