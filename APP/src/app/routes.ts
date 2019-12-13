@@ -10,6 +10,7 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SignInG3rdComponent } from './user/sign-in-g3rd/sign-in-g3rd.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NotLogInComponent } from './not-log-in/not-log-in.component';
+import { SongComponent } from './song/song.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -19,6 +20,8 @@ export const appRoutes: Routes = [
     { path: '', component: HomeComponent },
 
     { path: 'about', component: AboutComponent },
+
+    { path: 'songs', component: SongComponent },
 
     { path: 'signup', component: UserComponent,
         children: [{ path: '', component: SignUpComponent }]},

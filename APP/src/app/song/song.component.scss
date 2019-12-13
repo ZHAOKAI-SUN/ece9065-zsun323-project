@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap');
 
-$primary: rgb(0, 70, 56);
+$primary: rgb(36, 153, 46);
 
 body {
     margin: 0;
@@ -15,7 +15,7 @@ body {
 
 header {
     background: $primary;
-    padding: 1.5em 0;
+    padding: 0.1em 0;
     
     a {
         color: white;
@@ -27,7 +27,7 @@ header {
     }
     
     nav {
-        float: right;
+        
 
         ul {
             list-style-type: none;

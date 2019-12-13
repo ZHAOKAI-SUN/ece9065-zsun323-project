@@ -14,6 +14,8 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NotLogInComponent } from './not-log-in/not-log-in.component';
 import { SignInG3rdComponent } from './user/sign-in-g3rd/sign-in-g3rd.component';
+import { SongComponent } from './song/song.component';
+
 // Routes
 import { appRoutes } from './routes';
 // Services
@@ -46,7 +48,8 @@ export function provideConfig() {
     UserProfileComponent,
     SignInComponent,
     NotLogInComponent,
-    SignInG3rdComponent
+    SignInG3rdComponent,
+    SongComponent
   ],//STOP
   imports: [    //// imports start
     BrowserModule,
