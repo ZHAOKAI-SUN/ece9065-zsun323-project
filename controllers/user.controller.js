@@ -23,8 +23,8 @@ module.exports.register = (req, res, next) => {
     
     user.email = req.body.email;
     user.password = req.body.password;
-    user.status = "Not-active"; // Default value: "Not-active" . After email verification, becomes "Normal"
-    user.level = "Normal";      // Default value: "Normal"
+    user.status = "Not-active"; // Default value: "Not-active" . After email verification, becomes "Normal" // 3 options: Normal, Locked, Not-active
+    user.level = "Normal";      // Default value: "Normal" // 2 options: Normal, Admin
 
     user.save((err, doc) => {
         if (!err) {

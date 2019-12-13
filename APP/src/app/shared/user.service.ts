@@ -29,20 +29,20 @@ export class UserService {
 
 
   postUser(user: User){
-    return this.http.post(environment.apiBaseUrl+'/register',user,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
+    return this.http.post(environment.apiBaseUrl+'/user/open/register',user,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
   }
 
   login(authCredentials) {
-    return this.http.post(environment.apiBaseUrl + '/authenticate', authCredentials,this.noAuthHeader);
+    return this.http.post(environment.apiBaseUrl + '/user/open/authenticate', authCredentials,this.noAuthHeader);
   }
 
   getUserProfile() {
-    return this.http.get(environment.apiBaseUrl + '/userProfile');
+    return this.http.get(environment.apiBaseUrl + '/user/secure/userProfile');
   }
 
   // Resend verification email
   resend(form:NgForm) {
-    return this.http.post(environment.apiBaseUrl + '/resend', form,this.noAuthHeader)
+    return this.http.post(environment.apiBaseUrl + '/user/open/resend', form,this.noAuthHeader)
     
   }
 
