@@ -45,5 +45,9 @@ export class SongService {
     return this.http.get(environment.apiBaseUrl+'/song/open/readTOP10',this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
   }
 
+  searchSong(key){
+    return this.http.get(environment.apiBaseUrl+'/song/open/searchSong/'+key,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
+  }
+
 
 }

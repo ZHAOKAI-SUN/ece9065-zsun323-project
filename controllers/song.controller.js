@@ -106,7 +106,8 @@ module.exports.song_search = (req, res, next) => {
     Song.find(_filter, (err, song) => {
         console.log(song);
         if (song.length==0) {
-            return res.status(404).json({ status: false, message: "No search results"});
+            //return res.status(404).json({ status: false, message: "No search results"});
+            return res.status(404).send(['No search results']);
         } else {
             for (var i = 0; i < song.length; i++) {
                 var searchSong = {
@@ -114,20 +115,20 @@ module.exports.song_search = (req, res, next) => {
                     TOP: i+1,
                     ID: song[i]._id,
                     // ↓ ID3V1 Attributes
-                    title: song[i].title,
-                    artist: song[i].artist,
-                    album: song[i].album,
-                    year: song[i].year,
-                    comment: song[i].comment,
-                    reserve: song[i].reserve,
-                    track: song[i].track,
-                    genre: song[i].genre,
+                    Title: song[i].title,
+                    Artist: song[i].artist,
+                    Album: song[i].album,
+                    Year: song[i].year,
+                    Comment: song[i].comment,
+                    Reserve: song[i].reserve,
+                    Track: song[i].track,
+                    Genre: song[i].genre,
                     // ↓ Website Attributes
-                    NOR: song[i].nor,
-                    AR: song[i].ar,
-                    status: song[i].status,
-                    addname: song[i].addname,
-                    addtime: song[i].addtime
+                    Nor: song[i].nor,
+                    Ar: song[i].ar,
+                    Status: song[i].status,
+                    Addname: song[i].addname,
+                    Addtime: song[i].addtime
                 };
                 array.push(searchSong);
             }

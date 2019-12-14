@@ -1,1 +1,76 @@
-<p>search-song works!</p>
+<div class="wrapper">
+    <div id="formContent">
+
+<form #searchForm="ngForm" (ngSubmit)="searchForm.valid && onSubmit(searchForm)">
+    
+    <h1> Search Songs </h1>
+
+    <input type="text" #title="ngModel" [(ngModel)]="songService.selectedSong.title" name="title" placeholder="Keywords"
+    maxlength="30" required [ngClass]="{'invalid-textbox' :searchForm.submitted && !title.valid }">
+
+    <div *ngIf="searchForm.submitted && title.errors">
+        <label *ngIf="title.errors.required" class="validation-message">This info is required</label>
+        <label *ngIf="title.errors.maxlength" class="validation-message">At most 30 characters</label>
+    </div>
+
+    <input type="submit" value="SEARCH">
+
+</form>
+
+<!-- Error message -->
+<div class="alert" *ngIf="serverErrorMessages">
+  {{serverErrorMessages}}
+</div>
+
+    </div>
+</div>
+
+<div align="center" *ngIf="showSucessMessage">
+
+    <ul>
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <table class="table table-striped">
+    
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th width="500px">Details</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            <tr *ngFor="let index of this.song; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>
+                                    Title : {{song[i].Title}}<br>
+                                    Artist : {{song[i].Artist}}<br>
+                                    Album : {{song[i].Album}}<br>
+                                    Year : {{song[i].Year}}<br>
+                                    Comment : {{song[i].Comment}}<br>
+                                    Reserve : {{song[i].Reserve}}<br>
+                                    Track : {{song[i].Track}}<br>
+                                    Genre : {{song[i].Genre}}
+                                </td>
+                                <td>
+                                    <button (click)="infopage(song[i])" title="View details">
+                                        <img src="assets/image/information.png" height="25" width="25">
+                                    </button>
+                                    <button (click)="infopage()" title="Add rating and review">
+                                        <img src="assets/image/writereview.png" height="25" width="25">
+                                    </button>
+                                    <button (click)="infopage()" title="Add to playlist">
+                                        <img src="assets/image/addtoplaylist.png" height="25" width="25">
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+    
+                    </table>
+                </div>
+            </div>
+        </div>
+    </ul>
+</div>
