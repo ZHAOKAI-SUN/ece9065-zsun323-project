@@ -1,1 +1,37 @@
-<p>top10 works!</p>
+<div align="center">
+
+<h1> TOP 10 Most Popular Songs </h1>
+
+<ul>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <table class="table table-striped">
+
+                    <thead>
+                        <tr>
+                            <th>Ranking</th>
+                            <th>Song Title</th>
+                            <th>Artist</th>
+                            <th>No. of reviews</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let index of this.song; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{song[i].Title}}</td>
+                            <td>{{song[i].Artist}}</td>
+                            <td>{{song[i].Nor}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</ul>
+
+<h3 style="color:red"> [ Sort by number of reviews ] </h3>
+
+</div>

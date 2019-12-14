@@ -41,5 +41,9 @@ export class SongService {
     return this.http.post(environment.apiBaseUrl+'/song/secure/createSong',song,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
   }
 
+  topSong(){
+    return this.http.get(environment.apiBaseUrl+'/song/open/readTOP10',this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
+  }
+
 
 }
