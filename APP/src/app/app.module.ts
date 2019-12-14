@@ -23,6 +23,7 @@ import { AddSongComponent } from './song/add-song/add-song.component';
 import { appRoutes } from './routes';
 // Services
 import { UserService } from './shared/user.service';
+import { SongService } from './shared/song.service';
 // Other
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';

@@ -23,6 +23,8 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "ng4-social-login": "^1.4.2",
+    "ngx-bootstrap": "^5.2.0",
+    "ngx-bootstrap-modal": "^2.0.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "rxjs": "~6.4.0",
