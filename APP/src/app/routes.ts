@@ -46,6 +46,6 @@ export const appRoutes: Routes = [
             children: [{ path: '', component: SearchSongComponent }]},
 
     { path: 'songs/add_song', component: SongComponent,
-            children: [{ path: '', component: AddSongComponent }]},
+            children: [{ path: '', component: AddSongComponent }]}, // No access without login
 
 ];

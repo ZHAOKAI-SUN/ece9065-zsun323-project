@@ -1,1 +1,75 @@
-<p>add-song works!</p>
+<form #addForm="ngForm" (ngSubmit)="addForm.valid && onSubmit(addForm)">
+    
+    <h1> Add New Songs </h1>
+
+    <input type="text" #title="ngModel" [(ngModel)]="songService.selectedSong.title" name="title" placeholder="Title"
+    maxlength="30" required [ngClass]="{'invalid-textbox' :addForm.submitted && !title.valid }">
+
+    <div *ngIf="addForm.submitted && title.errors">
+        <label *ngIf="title.errors.required" class="validation-message">This info is required</label>
+        <label *ngIf="title.errors.maxlength" class="validation-message">At most 30 characters</label>
+    </div>
+
+
+    <input type="text" #artist="ngModel" [(ngModel)]="songService.selectedSong.artist" name="artist" placeholder="Artist"
+    maxlength="30" [ngClass]="{'invalid-textbox' :addForm.submitted && !artist.valid }">
+
+    <div *ngIf="addForm.submitted && artist.errors">
+        <label *ngIf="artist.errors.maxlength" class="validation-message">At most 30 characters</label>
+    </div>
+
+
+    <input type="text" #album="ngModel" [(ngModel)]="songService.selectedSong.album" name="album" placeholder="Album"
+    maxlength="30" [ngClass]="{'invalid-textbox' :addForm.submitted && !album.valid }">
+
+    <div *ngIf="addForm.submitted && album.errors">
+        <label *ngIf="album.errors.maxlength" class="validation-message">At most 30 characters</label>
+    </div>
+
+
+    <input type="text" #year="ngModel" [(ngModel)]="songService.selectedSong.year" name="year" placeholder="Year"
+    maxlength="4" [ngClass]="{'invalid-textbox' :addForm.submitted && !year.valid }" oninput="value=value.replace(/[^\d]/g,'')">
+
+    <div *ngIf="addForm.submitted && year.errors">
+        <label *ngIf="year.errors.maxlength" class="validation-message">At most 4 characters</label>
+    </div>
+
+
+    <input type="text" #comment="ngModel" [(ngModel)]="songService.selectedSong.comment" name="comment" placeholder="Comment"
+    maxlength="28" [ngClass]="{'invalid-textbox' :addForm.submitted && !comment.valid }">
+
+    <div *ngIf="addForm.submitted && comment.errors">
+        <label *ngIf="comment.errors.maxlength" class="validation-message">At most 28 characters</label>
+    </div>
+
+    
+    <input type="text" #track="ngModel" [(ngModel)]="songService.selectedSong.track" name="track" placeholder="Track"
+    maxlength="1" [ngClass]="{'invalid-textbox' :addForm.submitted && !track.valid }" oninput="value=value.replace(/[^\d]/g,'')">
+
+    <div *ngIf="addForm.submitted && track.errors">
+        <label *ngIf="track.errors.maxlength" class="validation-message">At most 1 characters</label>
+    </div>
+
+
+    <input type="text" #genre="ngModel" [(ngModel)]="songService.selectedSong.genre" name="genre" placeholder="Genre"
+    maxlength="20" [ngClass]="{'invalid-textbox' :addForm.submitted && !genre.valid }">
+
+    <div *ngIf="addForm.submitted && genre.errors">
+        <label *ngIf="genre.errors.maxlength" class="validation-message">At most 20 characters</label>
+    </div>
+
+
+    <input type="submit" value="ADD NOW">
+
+    
+</form>
+
+<!-- Success message -->
+<div class="success" *ngIf="showSucessMessage">
+  New song created successfully!
+</div>
+  
+<!-- Error message -->
+<div class="alert" *ngIf="serverErrorMessages">
+  {{serverErrorMessages}}
+</div>
