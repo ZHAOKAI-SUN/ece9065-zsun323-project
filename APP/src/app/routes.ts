@@ -50,6 +50,6 @@ export const appRoutes: Routes = [
             children: [{ path: '', component: AddSongComponent, canActivate:[AuthGuard] }]}, // No access without login
 
     { path: 'songs/details_song', component: SongComponent,
-            children: [{ path: '', component: SongDetailComponent }]}, // No access without login
+            children: [{ path: '', component: SongDetailComponent }]},
 
 ];
