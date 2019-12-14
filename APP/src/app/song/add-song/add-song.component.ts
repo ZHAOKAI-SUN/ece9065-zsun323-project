@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 // Step 4: add service to component
 import { SongService } from '../../shared/song.service';
 
+import { AppComponent } from '../../app.component';
+
 @Component({
   selector: 'app-add-song',
   templateUrl: './add-song.component.html',
@@ -16,13 +18,15 @@ export class AddSongComponent implements OnInit {
   showSucessMessage: boolean;
   serverErrorMessages: string;
 
-  constructor(private songService: SongService) { }
+  constructor(private songService: SongService, private appComponent: AppComponent) { }
 
   ngOnInit() {
   }
 
   // function start
   onSubmit(form: NgForm) {
+    // Put global variables into form before form transfer
+    form.value.addname = this.appComponent.owner;
     this.songService.postSong(form.value).subscribe(
       res => { // function 1
         this.showSucessMessage = true;
@@ -53,7 +57,7 @@ export class AddSongComponent implements OnInit {
       nor: null,
       ar: '',
       status: '',
-      addname: '',
+      addname: this.appComponent.owner,
       addtime: null,
       title0artist: ''
     };

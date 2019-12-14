@@ -4,6 +4,8 @@ import { Router } from "@angular/router";
 
 import { UserService } from '../../shared/user.service';
 
+import { AppComponent } from '../../app.component';
+
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -11,7 +13,7 @@ import { UserService } from '../../shared/user.service';
 })
 export class SignInComponent implements OnInit {
 
-  constructor(private userService: UserService,private router : Router) { }
+  constructor(private userService: UserService, private router : Router, private appComponent: AppComponent) { }
 
   model ={
     email :'',
@@ -31,6 +33,9 @@ export class SignInComponent implements OnInit {
       res => {
         this.userService.setToken(res['token']);
         this.router.navigateByUrl('/'); // !!!!!!!!!! Important function: jump if you succeed !!!!!!!!!!
+        // Create global variable: owner
+        this.appComponent.owner = this.model.email;
+        console.log(this.appComponent.owner);
       },
       err => {
         this.serverErrorMessages = err.error.message; // serverErrorMessages, related to HTML
