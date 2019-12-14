@@ -23,7 +23,7 @@ export class SongDetailComponent implements OnInit {
   }
 
   onLogout(){
-    this.router.navigate(['/songs/TOP10']);
+    this.router.navigate([this.appComponent.route]);
   }
 
 }

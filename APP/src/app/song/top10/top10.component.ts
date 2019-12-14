@@ -35,7 +35,9 @@ export class TOP10Component implements OnInit {
 
   infopage(i){ // Use for jump
     this.appComponent.selectedsong = i;
+    this.appComponent.route = 'songs/TOP10';
     console.log(this.appComponent.selectedsong);
+    console.log(this.appComponent.route);
     this.router.navigateByUrl('/songs/details_song');
   }
 
