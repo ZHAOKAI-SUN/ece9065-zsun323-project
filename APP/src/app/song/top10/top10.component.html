@@ -11,6 +11,7 @@
                     <thead>
                         <tr>
                             <th>Ranking</th>
+                            <th style="display:none">Song ID</th>
                             <th>Song Title</th>
                             <th>Artist</th>
                             <th>No. of reviews</th>
@@ -20,6 +21,7 @@
                     <tbody>
                         <tr *ngFor="let index of this.song; let i = index">
                             <td>{{i+1}}</td>
+                            <td style="display:none">{{song[i].ID}}</td>
                             <td>{{song[i].Title}}</td>
                             <td>{{song[i].Artist}}</td>
                             <td>{{song[i].Nor}}</td>
