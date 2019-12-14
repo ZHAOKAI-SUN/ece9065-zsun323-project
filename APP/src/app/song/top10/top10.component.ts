@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SongService } from '../../shared/song.service';
 import { AppComponent } from '../../app.component';
+import { Router } from "@angular/router"; // Use for jump
+import { UserService } from '../../shared/user.service'; // Use for jump
 
 @Component({
   selector: 'app-top10',
@@ -16,7 +18,7 @@ export class TOP10Component implements OnInit {
   serverErrorMessages: string;
   song: any;
 
-  constructor(private songService: SongService, private appComponent: AppComponent) { }
+  constructor(private songService: SongService, private appComponent: AppComponent, private router : Router) { }
 
   ngOnInit() {
     // When opening the page, load ngFor
@@ -30,4 +32,11 @@ export class TOP10Component implements OnInit {
       }
     )
   }
+
+  infopage(i){ // Use for jump
+    this.appComponent.selectedsong = i;
+    console.log(this.appComponent.selectedsong);
+    this.router.navigateByUrl('/songs/details_song');
+  }
+
 }

@@ -18,6 +18,7 @@ import { SongComponent } from './song/song.component';
 import { TOP10Component } from './song/top10/top10.component';
 import { SearchSongComponent } from './song/search-song/search-song.component';
 import { AddSongComponent } from './song/add-song/add-song.component';
+import { SongDetailComponent } from './song/song-detail/song-detail.component';
 
 // Routes
 import { appRoutes } from './routes';
@@ -56,7 +57,8 @@ export function provideConfig() {
     SongComponent,
     TOP10Component,
     SearchSongComponent,
-    AddSongComponent
+    AddSongComponent,
+    SongDetailComponent
   ],//STOP
   imports: [    //// imports start
     BrowserModule,

@@ -14,6 +14,7 @@ import { SongComponent } from './song/song.component';
 import { TOP10Component } from './song/top10/top10.component';
 import { SearchSongComponent } from './song/search-song/search-song.component';
 import { AddSongComponent } from './song/add-song/add-song.component';
+import { SongDetailComponent } from './song/song-detail/song-detail.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -47,5 +48,8 @@ export const appRoutes: Routes = [
 
     { path: 'songs/add_song', component: SongComponent,
             children: [{ path: '', component: AddSongComponent, canActivate:[AuthGuard] }]}, // No access without login
+
+    { path: 'songs/details_song', component: SongComponent,
+            children: [{ path: '', component: SongDetailComponent }]}, // No access without login
 
 ];

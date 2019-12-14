@@ -15,6 +15,7 @@
                             <th>Song Title</th>
                             <th>Artist</th>
                             <th>No. of reviews</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
 
@@ -25,6 +26,17 @@
                             <td>{{song[i].Title}}</td>
                             <td>{{song[i].Artist}}</td>
                             <td>{{song[i].Nor}}</td>
+                            <td>
+                                <button (click)="infopage(song[i])" title="View details">
+                                    <img src="assets/image/information.png" height="25" width="25">
+                                </button>
+                                <button (click)="infopage()" title="Add rating and review">
+                                    <img src="assets/image/writereview.png" height="25" width="25">
+                                </button>
+                                <button (click)="infopage()" title="Add to playlist">
+                                    <img src="assets/image/addtoplaylist.png" height="25" width="25">
+                                </button>
+                            </td>
                         </tr>
                     </tbody>
 

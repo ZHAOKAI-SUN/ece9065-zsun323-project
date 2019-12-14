@@ -10,5 +10,6 @@ export class AppComponent {
   title = 'APP';
 
   public owner: String;
+  public selectedsong: JSON;
 
 }
