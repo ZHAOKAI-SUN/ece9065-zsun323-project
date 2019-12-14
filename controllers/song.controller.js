@@ -53,7 +53,7 @@ exports.song_read = function (req, res) {
 // READ TOP 10
 module.exports.song_top10 = (req, res, next) => {
     var array = new Array();
-    Song.find().sort({ nor: -1}).limit(10).then((song) => {
+    Song.find({ status: { $ne: 'Hidden'} }).sort({ nor: -1}).limit(10).then((song) => { // Don't find songs with a status of "hidden"
         console.log(song);
         for (var i = 0; i < song.length; i++) {
             var searchSong = {

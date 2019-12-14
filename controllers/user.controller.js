@@ -14,7 +14,6 @@ var options = {
 }
 var client = nodemailer.createTransport(sgTransport(options));
 
-
 const User = mongoose.model('User');
 
 // User registration
