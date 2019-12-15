@@ -18,3 +18,12 @@ export class Song {
     title0artist: String;
 }
 
+export class Review {
+    title: String;
+    titleid: String;
+    addname: String;
+    addtime: Date;
+    rate: Number;
+    text: String;
+}
+

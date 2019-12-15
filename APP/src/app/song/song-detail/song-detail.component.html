@@ -62,4 +62,40 @@
         </tbody>
     </table>
 
+    <h1> Reviews </h1>
+
+    <ul *ngIf="showSucessMessage">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <table class="table table-striped">
+    
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Time</th>
+                                <th>Rating</th>
+                                <th>Comment</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let index of this.review; let i = index">
+                                <td>{{review[i].Addname}}</td>
+                                <td>{{review[i].Addtime}}</td>
+                                <td>{{review[i].Rate}}</td>
+                                <td>{{review[i].Text}}</td>
+                            </tr>
+                        </tbody>
+    
+                    </table>
+                </div>
+            </div>
+        </div>
+    </ul>
+    
+    <h3 *ngIf="showSucessMessage" style="color:red"> [ Sort by comment time ] </h3>
+
+    <h1 *ngIf="showFailedMessage" style="color:red"> No reviews on this song yet! </h1>
+
 </div>

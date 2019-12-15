@@ -43,9 +43,9 @@ exports.review_read = function (req, res) {
 module.exports.review_search = (req, res, next) => {
     var array = new Array();
     var word  = req.params.id;
+    console.log(word);
 
     Review.find({titleid:word}, (err, review) => {
-        console.log(review);
         if (review.length==0) {
             //return res.status(404).json({ status: false, message: "No search results"});
             return res.status(404).send(['No search results']);
@@ -65,5 +65,5 @@ module.exports.review_search = (req, res, next) => {
             console.log(array);
             return res.status(200).send(array);
         }
-    })
+    }).sort({ addtime: -1}) // Sort by time
 };

@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 // Step 2: add model to service
 import { Song } from './song.model';
 import { NgForm } from '@angular/forms';
+import { Review } from './song.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,15 @@ export class SongService {
     title0artist: ''
   };
 
+  selectedReview: Review = {
+    title: '',
+    titleid: '',
+    addname: '',
+    addtime: null,
+    rate: null,
+    text: ''
+  };
+
   noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True' }) };
 
   constructor(private http: HttpClient) { }
@@ -47,6 +57,10 @@ export class SongService {
 
   searchSong(key){
     return this.http.get(environment.apiBaseUrl+'/song/open/searchSong/'+key,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
+  }
+
+  searchReview(key){
+    return this.http.get(environment.apiBaseUrl+'/review/open/searchReview/'+key,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
   }
 
 
