@@ -8,3 +8,4 @@ mongoose.connect(process.env.MONGODB_URI, (err) => {
 // Add Schema every time!!
 require('./user.model');
 require('./song.model');
+require('./review.model');
