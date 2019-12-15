@@ -20,6 +20,10 @@ export class AddReviewComponent implements OnInit {
 
   song: any;
   songname: any;
+  newnor: any;
+  newrate: any;
+  newar:any;
+  newjson: any;
 
   constructor(private songService: SongService, private appComponent: AppComponent) { }
 
@@ -37,11 +41,13 @@ export class AddReviewComponent implements OnInit {
     form.value.addname = this.appComponent.owner;
     form.value.title = this.song.Title;
     form.value.titleid = this.song.ID;
+    this.newrate = form.value.rate;
     this.songService.createReview(form.value).subscribe(
       res => { // function 1
         this.showSucessMessage = true;
         setTimeout(() => this.showSucessMessage = false, 4000);
         this.resetForm(form);
+        this.calculate();
       },
       err => { // function 2
         if (err.status === 422) {
@@ -60,10 +66,42 @@ export class AddReviewComponent implements OnInit {
       addname: '',
       addtime: null,
       rate: null,
-       text: ''
+      text: ''
     };
     form.resetForm();
     this.serverErrorMessages = '';
+  }
+
+  calculate() {
+
+    this.newnor = this.song.Nor+1; // New "nor" = "nor" + 1
+    // this.song.Ar = Original average rating
+    // this.song.Nor = Original numbers of review
+    // this.newrate = New rating
+    // this.newnor = New numbers of review
+    // this.newar = New average rating
+    this.newar = String((((parseFloat(this.song.Ar) * parseFloat(this.song.Nor)) + parseFloat(this.newrate)) / parseFloat(this.newnor)).toFixed(2))
+    this.newjson = {
+      "ar"  : this.newar,
+      "nor" : this.newnor
+    }
+
+    this.songService.updateSong(this.song.ID, this.newjson).subscribe(
+      res => { // function 1
+        this.showSucessMessage = true;
+        setTimeout(() => this.showSucessMessage = false, 4000);
+      },
+      err => { // function 2
+        if (err.status === 422) {
+          this.serverErrorMessages = err.error.join('<br/>');
+        }
+        else
+          this.serverErrorMessages = 'We don\'t know what\'s wrong';
+      }
+    );
+
+
+
   }
 
 }

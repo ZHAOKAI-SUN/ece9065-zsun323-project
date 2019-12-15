@@ -150,7 +150,7 @@ exports.song_details = function (req, res) {
 exports.song_update = function (req, res) {
     Song.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, song) {
         if (err) return next(err);
-        res.send('Song udpated.');
+        res.status(200).send(['Song udpated.']);
     });
 };
 
