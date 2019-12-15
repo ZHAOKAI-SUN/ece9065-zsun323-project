@@ -91,6 +91,7 @@ module.exports.song_search = (req, res, next) => {
     console.log(word);
 
     var _filter = {
+        $and: [{
         $or: [
             { title: { $regex: word, $options: '$i'} },
             { artist: { $regex: word, $options: '$i'} },
@@ -101,6 +102,7 @@ module.exports.song_search = (req, res, next) => {
             { track: { $regex: word, $options: '$i'} },
             { genre: { $regex: word, $options: '$i'} }
         ]
+            }, {status: { $ne: 'Hidden' } }]
     }
 
     Song.find(_filter, (err, song) => {
