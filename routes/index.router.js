@@ -7,6 +7,7 @@ const jwtHelper = require('../config/jwtHelper');
 const ctrlUser = require('../controllers/user.controller');
 const song_controller = require('../controllers/song.controller');
 const review_controller = require('../controllers/review.controller');
+const playlist_controller = require('../controllers/playlist.controller');
 
 
 ////// 2 : Add router path
@@ -46,6 +47,23 @@ router.get      ('/review/open/readallReview', review_controller.review_read);
 // SEARCH
 router.get      ('/review/open/searchReview/:id', review_controller.review_search);
 
+//// playlist part
+// TEST
+router.get      ('/playlist/open/testPlaylist', playlist_controller.test);
+// CREATE
+router.post     ('/playlist/secure/createPlaylist', playlist_controller.playlist_create);
+// READ all
+router.get      ('/playlist/open/readallPlaylist', playlist_controller.playlist_read);
+// READ one by ID
+router.get      ('/playlist/open/:id/readPlaylist', playlist_controller.playlist_details);
+// SEARCH (Search only playlists with "public" status)
+router.get      ('/playlist/open/searchPlaylist/:id', playlist_controller.playlist_search);
+// SEARCH MY (Search all playlists)
+router.get      ('/playlist/open/searchmyPlaylist/:id', playlist_controller.playlist_searchmy);
+// UPDATE
+router.put      ('/playlist/secure/:id/updatePlaylist', playlist_controller.playlist_update);
+// DELETE
+router.delete   ('/playlist/secure/:id/deletePlaylist', playlist_controller.playlist_delete);
 
 
 ////// Just keep it
