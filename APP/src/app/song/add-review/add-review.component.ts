@@ -19,6 +19,7 @@ export class AddReviewComponent implements OnInit {
   serverErrorMessages: string;
 
   song: any;
+  songname: any;
 
   constructor(private songService: SongService, private appComponent: AppComponent) { }
 
@@ -27,6 +28,7 @@ export class AddReviewComponent implements OnInit {
     console.log(this.appComponent.owner);
     console.log(this.song.Title);
     console.log(this.song.ID);
+    this.songname = this.song.Title;
   }
 
   // function start

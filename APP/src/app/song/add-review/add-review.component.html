@@ -3,6 +3,9 @@
 
 <form #addForm="ngForm" (ngSubmit)="addForm.valid && onSubmit(addForm)">
     
+    <h1> Song Title </h1>
+    <h1 style="color:rgb(197, 0, 0)"> < {{songname}} > </h1>
+
     <h1> Add Rating </h1>
 
     <select name="rate" #rate="ngModel" [(ngModel)]="songService.selectedSong.rate"
