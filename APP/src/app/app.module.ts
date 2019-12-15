@@ -28,7 +28,8 @@ import { SongService } from './shared/song.service';
 // Other
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'ng4-social-login'; // 3rd log in
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'ng4-social-login';
+import { AddReviewComponent } from './song/add-review/add-review.component'; // 3rd log in
 
 //3 party
 const config = new AuthServiceConfig([
@@ -58,7 +59,8 @@ export function provideConfig() {
     TOP10Component,
     SearchSongComponent,
     AddSongComponent,
-    SongDetailComponent
+    SongDetailComponent,
+    AddReviewComponent
   ],//STOP
   imports: [    //// imports start
     BrowserModule,
