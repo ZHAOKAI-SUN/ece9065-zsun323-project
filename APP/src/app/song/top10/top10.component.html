@@ -1,6 +1,7 @@
 <div align="center">
 
 <h1> TOP 10 Most Popular Songs </h1>
+<h3 style="color:red"> [ Sort by number of reviews ] </h3>
 
 <ul>
     <div class="container">
@@ -15,6 +16,7 @@
                             <th>Song Title</th>
                             <th>Artist</th>
                             <th>No. of reviews</th>
+                            <th>Average rating</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -26,6 +28,7 @@
                             <td>{{song[i].Title}}</td>
                             <td>{{song[i].Artist}}</td>
                             <td>{{song[i].Nor}}</td>
+                            <td>{{song[i].Ar}}</td>
                             <td>
                                 <button (click)="infopage(song[i])" title="View details">
                                     <img src="assets/image/information.png" height="25" width="25">
@@ -45,7 +48,5 @@
         </div>
     </div>
 </ul>
-
-<h3 style="color:red"> [ Sort by number of reviews ] </h3>
 
 </div>
