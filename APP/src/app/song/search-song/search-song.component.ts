@@ -51,4 +51,12 @@ export class SearchSongComponent implements OnInit {
     this.router.navigateByUrl('/songs/details_song');
   }
 
+  addreview(info){ // Use for jump
+    this.appComponent.selectedsong = info;
+    this.appComponent.route = 'songs/TOP10';
+    console.log(this.appComponent.selectedsong);
+    console.log(this.appComponent.route);
+    this.router.navigateByUrl('/songs/add_review');
+  }
+
 }

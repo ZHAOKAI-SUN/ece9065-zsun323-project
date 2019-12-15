@@ -19,6 +19,7 @@ import { TOP10Component } from './song/top10/top10.component';
 import { SearchSongComponent } from './song/search-song/search-song.component';
 import { AddSongComponent } from './song/add-song/add-song.component';
 import { SongDetailComponent } from './song/song-detail/song-detail.component';
+import { AddReviewComponent } from './song/add-review/add-review.component';
 
 // Routes
 import { appRoutes } from './routes';
@@ -28,8 +29,7 @@ import { SongService } from './shared/song.service';
 // Other
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'ng4-social-login';
-import { AddReviewComponent } from './song/add-review/add-review.component'; // 3rd log in
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'ng4-social-login'; // 3rd log in
 
 //3 party
 const config = new AuthServiceConfig([
