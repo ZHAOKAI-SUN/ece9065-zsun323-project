@@ -16,6 +16,11 @@ import { SearchSongComponent } from './song/search-song/search-song.component';
 import { AddSongComponent } from './song/add-song/add-song.component';
 import { SongDetailComponent } from './song/song-detail/song-detail.component';
 import { AddReviewComponent } from './song/add-review/add-review.component';
+import { PlaylistComponent } from './playlist/playlist.component';
+import { NewPlaylistComponent } from './playlist/new-playlist/new-playlist.component';
+import { MyPlaylistComponent } from './playlist/my-playlist/my-playlist.component';
+import { SearchPlaylistComponent } from './playlist/search-playlist/search-playlist.component';
+import { DetailPlaylistComponent } from './playlist/detail-playlist/detail-playlist.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -27,6 +32,8 @@ export const appRoutes: Routes = [
     { path: 'about', component: AboutComponent },
 
     { path: 'songs', component: SongComponent },
+
+    { path: 'playlist', component: PlaylistComponent },
 
     { path: 'signup', component: UserComponent,
             children: [{ path: '', component: SignUpComponent }]},
@@ -55,5 +62,17 @@ export const appRoutes: Routes = [
 
     { path: 'songs/add_review', component: SongComponent,
             children: [{ path: '', component: AddReviewComponent, canActivate:[AuthGuard] }]}, // No access without login
+
+    { path: 'playlist/add_playlist', component: PlaylistComponent,
+            children: [{ path: '', component: NewPlaylistComponent }]},
+
+    { path: 'playlist/my_playlist', component: PlaylistComponent,
+            children: [{ path: '', component: MyPlaylistComponent }]},
+
+    { path: 'playlist/search_playlist', component: PlaylistComponent,
+            children: [{ path: '', component: SearchPlaylistComponent }]},
+
+    { path: 'playlist/details_playlist', component: PlaylistComponent,
+            children: [{ path: '', component: DetailPlaylistComponent }]},
 
 ];

@@ -20,6 +20,11 @@ import { SearchSongComponent } from './song/search-song/search-song.component';
 import { AddSongComponent } from './song/add-song/add-song.component';
 import { SongDetailComponent } from './song/song-detail/song-detail.component';
 import { AddReviewComponent } from './song/add-review/add-review.component';
+import { PlaylistComponent } from './playlist/playlist.component';
+import { NewPlaylistComponent } from './playlist/new-playlist/new-playlist.component';
+import { MyPlaylistComponent } from './playlist/my-playlist/my-playlist.component';
+import { SearchPlaylistComponent } from './playlist/search-playlist/search-playlist.component';
+import { DetailPlaylistComponent } from './playlist/detail-playlist/detail-playlist.component';
 
 // Routes
 import { appRoutes } from './routes';
@@ -60,7 +65,12 @@ export function provideConfig() {
     SearchSongComponent,
     AddSongComponent,
     SongDetailComponent,
-    AddReviewComponent
+    AddReviewComponent,
+    PlaylistComponent,
+    NewPlaylistComponent,
+    MyPlaylistComponent,
+    SearchPlaylistComponent,
+    DetailPlaylistComponent
   ],//STOP
   imports: [    //// imports start
     BrowserModule,
