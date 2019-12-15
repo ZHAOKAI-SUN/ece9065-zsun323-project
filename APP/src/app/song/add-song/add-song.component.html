@@ -70,13 +70,23 @@
 
 <!-- Success message -->
 <div class="success" *ngIf="showSucessMessage">
-  New song created successfully!
+
+  New song created successfully! <br>
+  <br>
+  Write the first comment!<br>
+  <br>
+  
+    <form #signInForm="ngForm" (ngSubmit)="jumptoreview()">
+      <input type="submit" value="Add Review Now">
+    </form>
+
 </div>
   
 <!-- Error message -->
 <div class="alert" *ngIf="serverErrorMessages">
   {{serverErrorMessages}}
 </div>
+
 
 
     </div>
