@@ -16,11 +16,11 @@ var reviewSchema = new mongoose.Schema({
     },
     rate: {
         type: Number,
-        required: 'You have to choose a rating'
+        //required: 'You have to choose a rating'
     },
     text: {
         type: String,
-        required: 'Comment text must be added'
+        //required: 'Comment text must be added'
     }
 });
 

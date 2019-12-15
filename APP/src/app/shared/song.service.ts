@@ -63,5 +63,9 @@ export class SongService {
     return this.http.get(environment.apiBaseUrl+'/review/open/searchReview/'+key,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
   }
 
+  createReview(review: Review){
+    return this.http.post(environment.apiBaseUrl+'/review/secure/createReview',review,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
+  }
+
 
 }

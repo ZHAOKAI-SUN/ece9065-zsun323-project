@@ -1,1 +1,45 @@
-<p>add-review works!</p>
+<div class="wrapper">
+    <div id="formContent">
+
+<form #addForm="ngForm" (ngSubmit)="addForm.valid && onSubmit(addForm)">
+    
+    <h1> Add Rating </h1>
+
+    <select name="rate" #rate="ngModel" [(ngModel)]="songService.selectedSong.rate"
+    required [ngClass]="{'invalid-textbox' :addForm.submitted && !rate.valid }">
+        <option value = 1 >1</option>
+        <option value = 2 >2</option>
+        <option value = 3 >3</option>
+        <option value = 4 >4</option>
+        <option value = 5> 5</option>
+    </select>
+
+    <div *ngIf="addForm.submitted && rate.errors">
+        <label *ngIf="rate.errors.required" class="validation-message">This info is required</label>
+    </div>
+
+    <h1> Add Comment </h1>
+
+    <input type="text" #text="ngModel" [(ngModel)]="songService.selectedSong.text" name="text" placeholder="Review Text"
+    required [ngClass]="{'invalid-textbox' :addForm.submitted && !text.valid }">
+
+    <div *ngIf="addForm.submitted && text.errors">
+        <label *ngIf="text.errors.required" class="validation-message">This info is required</label>
+    </div>
+
+    <input type="submit" value="ADD NOW">
+
+</form>
+
+<!-- Success message -->
+<div class="success" *ngIf="showSucessMessage">
+  Your comment added successfully!
+</div>
+  
+<!-- Error message -->
+<div class="alert" *ngIf="serverErrorMessages">
+  {{serverErrorMessages}}
+</div>
+
+    </div>
+</div>

@@ -18,8 +18,6 @@ export class SongDetailComponent implements OnInit {
   showFailedMessage: boolean;
 
   song: any;
-  songid: any;
-  songname: any;
   review : any;
 
   constructor(private songService: SongService, private appComponent: AppComponent, private router : Router) { }

@@ -18,6 +18,7 @@
     maxlength="30" [ngClass]="{'invalid-textbox' :addForm.submitted && !artist.valid }">
 
     <div *ngIf="addForm.submitted && artist.errors">
+        <label *ngIf="artist.errors.required" class="validation-message">This info is required</label>
         <label *ngIf="artist.errors.maxlength" class="validation-message">At most 30 characters</label>
     </div>
 
