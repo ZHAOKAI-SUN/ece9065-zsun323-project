@@ -1,1 +1,48 @@
-<p>my-playlist works!</p>
+<div align="center">
+
+    <h1 *ngIf="showSucessMessage"> My Playlist </h1>
+
+    <ul *ngIf="showSucessMessage">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <table class="table table-striped">
+    
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Create Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let index of this.playlist; let i = index">
+                                <td>{{playlist[i].Pname}}</td>
+                                <td>{{playlist[i].Description}}</td>
+                                <td>{{playlist[i].Addtime}}</td>
+                                <td>{{playlist[i].Status}}</td>
+                            </tr>
+                        </tbody>
+    
+                    </table>
+                </div>
+            </div>
+        </div>
+    </ul>
+    
+    <div class="wrapper" *ngIf="showFailedMessage">
+        <div id="formContent">
+            <h1> You haven't created any playlists! </h1>
+    
+            <form #signInForm="ngForm" (ngSubmit)="createPL()">
+            
+                <input type="submit" value="Create Now">
+            
+            </form>
+    
+        </div>
+      </div>
+
+</div>
