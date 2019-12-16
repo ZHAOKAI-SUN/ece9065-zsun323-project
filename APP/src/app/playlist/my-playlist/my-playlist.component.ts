@@ -43,4 +43,8 @@ export class MyPlaylistComponent implements OnInit {
     this.router.navigateByUrl('/playlist/add_playlist');
   }
 
+  infopage(i){ // Use for jump
+    console.log(i);
+  }
+
 }

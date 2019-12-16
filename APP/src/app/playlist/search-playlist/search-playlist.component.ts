@@ -45,7 +45,7 @@ export class SearchPlaylistComponent implements OnInit {
   }
 
   infopage(i){ // Use for jump
-    
+    console.log(i);
   }
 
 }

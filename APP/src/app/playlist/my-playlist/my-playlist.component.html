@@ -14,6 +14,7 @@
                                 <th>Description</th>
                                 <th>Create Time</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
 
@@ -23,6 +24,11 @@
                                 <td>{{playlist[i].Description}}</td>
                                 <td>{{playlist[i].Addtime}}</td>
                                 <td>{{playlist[i].Status}}</td>
+                                <td>
+                                    <button (click)="infopage(playlist[i])" title="View details">
+                                        <img src="assets/image/information.png" height="25" width="25">
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
     
