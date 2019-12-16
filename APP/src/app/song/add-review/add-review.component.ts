@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from "@angular/router"; // Use for jump
 
 // Step 4: add service to component
 import { SongService } from '../../shared/song.service';
@@ -25,7 +26,7 @@ export class AddReviewComponent implements OnInit {
   newar:any;
   newjson: any;
 
-  constructor(private songService: SongService, private appComponent: AppComponent) { }
+  constructor(private songService: SongService, private appComponent: AppComponent, private router : Router) { }
 
   ngOnInit() {
     this.song = this.appComponent.selectedsong;
@@ -99,9 +100,10 @@ export class AddReviewComponent implements OnInit {
           this.serverErrorMessages = 'We don\'t know what\'s wrong';
       }
     );
+  }
 
-
-
+  onLogout(){
+    this.router.navigate([this.appComponent.route]);
   }
 
 }
