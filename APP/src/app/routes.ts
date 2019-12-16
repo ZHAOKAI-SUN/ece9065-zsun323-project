@@ -23,6 +23,9 @@ import { SearchPlaylistComponent } from './playlist/search-playlist/search-playl
 import { DetailPlaylistComponent } from './playlist/detail-playlist/detail-playlist.component';
 import { EditPlaylistComponent } from './playlist/edit-playlist/edit-playlist.component';
 import { AddToPlaylistComponent } from './playlist/add-to-playlist/add-to-playlist.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserManageComponent } from './admin/user-manage/user-manage.component';
+import { SongManageComponent } from './admin/song-manage/song-manage.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -36,6 +39,8 @@ export const appRoutes: Routes = [
     { path: 'songs', component: SongComponent },
 
     { path: 'playlist', component: PlaylistComponent },
+
+    { path: 'admin', component: AdminComponent },
 
     { path: 'signup', component: UserComponent,
             children: [{ path: '', component: SignUpComponent }]},
@@ -82,5 +87,11 @@ export const appRoutes: Routes = [
 
     { path: 'playlist/add_to_playlist', component: PlaylistComponent,
             children: [{ path: '', component: AddToPlaylistComponent, canActivate:[AuthGuard] }]}, // No access without login
+
+    { path: 'admin/user_management', component: AdminComponent,
+            children: [{ path: '', component: UserManageComponent, canActivate:[AuthGuard] }]}, // No access without login
+    
+    { path: 'admin/song_management', component: AdminComponent,
+            children: [{ path: '', component: SongManageComponent, canActivate:[AuthGuard] }]}, // No access without login
 
 ];

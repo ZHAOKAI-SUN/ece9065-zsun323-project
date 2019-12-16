@@ -27,6 +27,9 @@ import { SearchPlaylistComponent } from './playlist/search-playlist/search-playl
 import { DetailPlaylistComponent } from './playlist/detail-playlist/detail-playlist.component';
 import { EditPlaylistComponent } from './playlist/edit-playlist/edit-playlist.component';
 import { AddToPlaylistComponent } from './playlist/add-to-playlist/add-to-playlist.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserManageComponent } from './admin/user-manage/user-manage.component';
+import { SongManageComponent } from './admin/song-manage/song-manage.component';
 
 // Routes
 import { appRoutes } from './routes';
@@ -36,10 +39,7 @@ import { SongService } from './shared/song.service';
 // Other
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'ng4-social-login';
-import { AdminComponent } from './admin/admin.component';
-import { UserManageComponent } from './admin/user-manage/user-manage.component';
-import { SongManageComponent } from './admin/song-manage/song-manage.component';// 3rd log in
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'ng4-social-login'; // 3rd log in
 
 //3 party
 const config = new AuthServiceConfig([
