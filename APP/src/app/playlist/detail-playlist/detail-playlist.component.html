@@ -1,1 +1,37 @@
-<p>detail-playlist works!</p>
+<div align="center">
+
+    <h1 *ngIf="showSucessMessage"> Playlist Information </h1>
+
+    <ul *ngIf="showSucessMessage">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <table class="table table-striped">
+    
+                        <thead>
+                            <tr>
+                                <th>Song Title</th>
+                                <th>Song Artist</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let index of this.plinfo; let i = index">
+                                <td>{{plinfo[i].SONGname}}</td>
+                                <td>{{plinfo[i].SONGartist}}</td>
+                            </tr>
+                        </tbody>
+    
+                    </table>
+                </div>
+            </div>
+        </div>
+    </ul>
+    
+    <div class="wrapper" *ngIf="showFailedMessage">
+        <div id="formContent">
+            <h1> No songs have been saved in this playlist! </h1>
+        </div>
+    </div>
+
+</div>

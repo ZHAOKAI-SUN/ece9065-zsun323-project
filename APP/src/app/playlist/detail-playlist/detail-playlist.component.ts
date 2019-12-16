@@ -17,6 +17,9 @@ export class DetailPlaylistComponent implements OnInit {
 
   sbuser: any;
   sbplaylist: any;
+  plinfo: any;
+  showSucessMessage: boolean;
+  showFailedMessage: boolean;
 
   constructor(private songService: SongService, private userService: UserService, private playlistService: PlaylistService, private appComponent: AppComponent, private router : Router) { }
 
@@ -26,6 +29,19 @@ export class DetailPlaylistComponent implements OnInit {
     this.sbplaylist = this.appComponent.selectedplaylist;
     console.log(this.sbuser);
     console.log(this.sbplaylist);
+
+    this.playlistService.searchPLinfo(this.sbplaylist.ID).subscribe(
+      res => { // function 1
+        console.log(res);
+        this.plinfo = res;
+        this.showSucessMessage = true;
+        this.showFailedMessage = false;
+      },
+      err => { // function 2
+        this.showSucessMessage = false;
+        this.showFailedMessage = true;
+      }
+    )
   }
 
 }

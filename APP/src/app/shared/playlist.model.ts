@@ -8,3 +8,12 @@ export class Playlist {
     status: string;
     pname0addname: string;
 }
+
+export class Plinfo {
+    plid: string;
+    plname: string;
+    songid: string;
+    songname: string;
+    songartist: string;
+    pname0addname: string;
+}
