@@ -1,1 +1,46 @@
-<p>edit-playlist works!</p>
+<div class="wrapper">
+    <div id="formContent">
+
+<form #addForm="ngForm" (ngSubmit)="addForm.valid && onSubmit(addForm)">
+    
+    <h1> Edit Your Playlist </h1>
+
+    <h3>Current Title : [ {{editplaylist.Pname}} ]</h3>
+    <input type="text" #pname="ngModel" [(ngModel)]="playlistService.selectedPlaylist.pname" name="pname" placeholder="New Title"
+    maxlength="50" [ngClass]="{'invalid-textbox' :addForm.submitted && !pname.valid }">
+
+    <div *ngIf="addForm.submitted && pname.errors">
+        <label *ngIf="pname.errors.maxlength" class="validation-message">At most 50 characters</label>
+    </div>
+
+
+    <h3>Current Description : [ {{editplaylist.Description}} ]</h3>
+    <input type="text" #description="ngModel" [(ngModel)]="playlistService.selectedPlaylist.description" name="description" placeholder="New Description"
+    maxlength="200" [ngClass]="{'invalid-textbox' :addForm.submitted && !description.valid }">
+
+    <div *ngIf="addForm.submitted && description.errors">
+        <label *ngIf="description.errors.maxlength" class="validation-message">At most 200 characters</label>
+    </div>
+
+    <input type="submit" value="EDIT NOW">
+
+</form>
+
+<form #signInForm="ngForm" (ngSubmit)="backtoPL()">
+    <input type="submit" value="Back to playlist">
+</form>
+
+<!-- Success message -->
+<div class="success" *ngIf="showSucessMessage">
+  Your playlist edited successfully! <br>
+</div>
+
+<!-- Error message -->
+<div class="alert" *ngIf="serverErrorMessages">
+  {{serverErrorMessages}}
+</div>
+
+
+
+    </div>
+</div>

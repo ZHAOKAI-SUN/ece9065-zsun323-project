@@ -74,7 +74,8 @@ export class MyPlaylistComponent implements OnInit {
   }
 
   edit(i){ // Use for jump
-    console.log(i);
+    console.log("jump to edit");
+    this.appComponent.selectedplaylist = i;
     this.router.navigateByUrl('/playlist/edit_playlist');
   }
 

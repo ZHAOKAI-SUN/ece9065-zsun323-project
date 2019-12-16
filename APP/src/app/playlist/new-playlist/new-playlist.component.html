@@ -15,7 +15,7 @@
 
 
     <input type="text" #description="ngModel" [(ngModel)]="playlistService.selectedPlaylist.description" name="description" placeholder="Description"
-    maxlength="200" [ngClass]="{'invalid-textbox' :addForm.submitted && !description.valid }">
+    maxlength="200" required [ngClass]="{'invalid-textbox' :addForm.submitted && !description.valid }">
 
     <div *ngIf="addForm.submitted && description.errors">
         <label *ngIf="description.errors.required" class="validation-message">This info is required</label>

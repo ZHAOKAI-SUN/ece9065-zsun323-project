@@ -12,5 +12,5 @@ export class AppComponent {
   public owner: String; // Username of the person logged in to the website
   public selectedsong: JSON; // Selected songs in TOP10, search, etc.
   public route: String; // Departure path. Used to return back
-
+  public selectedplaylist: JSON; // Selected playlist
 }
