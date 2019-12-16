@@ -39,4 +39,8 @@ export class PlaylistService {
     return this.http.post(environment.apiBaseUrl+'/playlist/secure/createPlaylist',playlist,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
   }
 
+  searchallPlaylist(key){ // Search all song, not include "private"
+    return this.http.get(environment.apiBaseUrl+'/playlist/open/searchPlaylist/'+key,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
+  }
+
 }
