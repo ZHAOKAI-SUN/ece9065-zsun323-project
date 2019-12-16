@@ -47,6 +47,7 @@ export class SearchPlaylistComponent implements OnInit {
   infopage(i){ // Use for jump
     console.log("jump to info");
     this.appComponent.selectedplaylist = i;
+    this.appComponent.route = 'playlist/search_playlist';
     this.router.navigateByUrl('playlist/details_playlist');
     this.appComponent.showdplinfoelete = false; // Don't allow deletion if from "Search Playlist"
   }

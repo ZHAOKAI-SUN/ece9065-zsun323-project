@@ -68,4 +68,8 @@ export class DetailPlaylistComponent implements OnInit {
     );
   }
 
+  goback(){
+    this.router.navigate([this.appComponent.route]);
+  }
+
 }
