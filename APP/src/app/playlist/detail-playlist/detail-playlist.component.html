@@ -21,7 +21,7 @@
                                 <td>{{plinfo[i].SONGname}}</td>
                                 <td>{{plinfo[i].SONGartist}}</td>
                                 <td>
-                                    <button (click)="infopage(song[i])" title="View details">
+                                    <button (click)="infopage(plinfo[i])" title="View details">
                                         <img src="assets/image/information.png" height="25" width="25">
                                     </button>
                                     <button (click)="remove(plinfo[i])" title="Remove from list" *ngIf="showdelete">

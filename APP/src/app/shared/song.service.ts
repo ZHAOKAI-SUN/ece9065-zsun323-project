@@ -71,5 +71,9 @@ export class SongService {
     return this.http.put(environment.apiBaseUrl+'/song/secure/'+key+'/updateSong',song,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
   }
 
+  searchSongbyID(key){
+    return this.http.get(environment.apiBaseUrl+'/song/open/'+key+'/readSong',this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
+  }
+
 
 }

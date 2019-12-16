@@ -22,10 +22,12 @@ export class DetailPlaylistComponent implements OnInit {
   showFailedMessage: boolean;
   serverErrorMessages: string;
   showdelete: boolean;
+  songinfo1: any;
+  songinfo2: any;
 
   constructor(private songService: SongService, private userService: UserService, private playlistService: PlaylistService, private appComponent: AppComponent, private router : Router) { }
 
-  ngOnInit() {
+  ngOnInit () {
     // get current user and current playlist
     this.sbuser = this.appComponent.owner;
     this.sbplaylist = this.appComponent.selectedplaylist;
@@ -47,7 +49,7 @@ export class DetailPlaylistComponent implements OnInit {
     )
   }
 
-  remove(key) {
+  remove (key) {
     // Update playlist status
     console.log(key.ID);
     this.playlistService.deletePlaylist(key.ID).subscribe(
@@ -68,8 +70,39 @@ export class DetailPlaylistComponent implements OnInit {
     );
   }
 
-  goback(){
+  goback () {
     this.router.navigate([this.appComponent.route]);
+  }
+
+  infopage (song) {
+    this.songService.searchSongbyID(song.SONGid).subscribe(
+      res => { // function 1
+        console.log(res);
+        this.songinfo1 = res;
+        this.songinfo2 = {
+          "Addname" : this.songinfo1.addname,
+          "Addtime": this.songinfo1.addtime,
+          "Album": this.songinfo1.album,
+          "Ar": this.songinfo1.ar,
+          "Artist": this.songinfo1.artist,
+          "Comment": this.songinfo1.comment,
+          "Genre": this.songinfo1.genre,
+          "Header": this.songinfo1.header,
+          "ID": this.songinfo1._id,
+          "Nor": this.songinfo1.nor,
+          "Reserve": this.songinfo1.reserve,
+          "Status": this.songinfo1.status,
+          "Title": this.songinfo1.title,
+          "Track": this.songinfo1.track,
+          "Year": this.songinfo1.year
+        }
+        this.appComponent.selectedsong = this.songinfo2;
+        this.appComponent.route = 'playlist/details_playlist';
+        this.router.navigateByUrl('/songs/details_song');
+      },
+      err => { // function 2
+      }
+    )
   }
 
 }
