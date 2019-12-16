@@ -27,6 +27,18 @@
                         </tbody>
     
                     </table>
+
+                    <div class="wrapper">
+                        <div id="formContent">
+                            <h1> Create a new playlist </h1>
+                    
+                            <form #signInForm="ngForm" (ngSubmit)="createPL()">
+                                <input type="submit" value="Create Now">
+                            </form>
+                    
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -37,12 +49,10 @@
             <h1> You haven't created any playlists! </h1>
     
             <form #signInForm="ngForm" (ngSubmit)="createPL()">
-            
                 <input type="submit" value="Create Now">
-            
             </form>
     
         </div>
-      </div>
+    </div>
 
 </div>
