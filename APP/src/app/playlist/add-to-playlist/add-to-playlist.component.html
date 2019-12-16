@@ -43,16 +43,51 @@
     
                     </table>
 
+                    <!-- Create new playlist part -->
+
                     <div class="wrapper">
                         <div id="formContent">
-                            <h1> Create a new playlist </h1>
                     
-                            <form #signInForm="ngForm" (ngSubmit)="createPL()">
-                                <input type="submit" value="Create Now">
-                            </form>
+                    <form #addForm="ngForm" (ngSubmit)="addForm.valid && onSubmit(addForm)">
+                        
+                        <h1> Add New Playlist </h1>
+                    
+                        <input type="text" #pname="ngModel" [(ngModel)]="playlistService.selectedPlaylist.pname" name="pname" placeholder="Title"
+                        maxlength="50" required [ngClass]="{'invalid-textbox' :addForm.submitted && !pname.valid }">
+                    
+                        <div *ngIf="addForm.submitted && pname.errors">
+                            <label *ngIf="pname.errors.required" class="validation-message">This info is required</label>
+                            <label *ngIf="pname.errors.maxlength" class="validation-message">At most 50 characters</label>
+                        </div>
+                    
+                    
+                        <input type="text" #description="ngModel" [(ngModel)]="playlistService.selectedPlaylist.description" name="description" placeholder="Description"
+                        maxlength="200" required [ngClass]="{'invalid-textbox' :addForm.submitted && !description.valid }">
+                    
+                        <div *ngIf="addForm.submitted && description.errors">
+                            <label *ngIf="description.errors.required" class="validation-message">This info is required</label>
+                            <label *ngIf="description.errors.maxlength" class="validation-message">At most 200 characters</label>
+                        </div>
+                    
+                        <input type="submit" value="ADD NOW">
+                    
+                    </form>
+                                        
+                    <!-- Success message -->
+                    <div class="success" *ngIf="showSucessMessage2">
+                      New playlist created successfully! <br>
+                    </div>
+                    <!-- Error message -->
+                    <div class="alert" *ngIf="serverErrorMessages2">
+                      {{serverErrorMessages2}}
+                    </div>
                     
                         </div>
                     </div>
+
+                    <!-- Create new playlist part -->
+
+                    <input type="button" (click)="goback()" value="Back" />
 
                 </div>
             </div>

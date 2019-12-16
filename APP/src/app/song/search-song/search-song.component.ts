@@ -53,7 +53,7 @@ export class SearchSongComponent implements OnInit {
 
   addreview(info){ // Use for jump
     this.appComponent.selectedsong = info;
-    this.appComponent.route = 'songs/TOP10';
+    this.appComponent.route = 'songs/search_song';
     console.log(this.appComponent.selectedsong);
     console.log(this.appComponent.route);
     this.router.navigateByUrl('/songs/add_review');
@@ -61,7 +61,7 @@ export class SearchSongComponent implements OnInit {
 
   addtoplaylist(info){ // Use for jump
     this.appComponent.selectedsong = info;
-    this.appComponent.route = 'songs/TOP10';
+    this.appComponent.route = 'songs/search_song';
     console.log(this.appComponent.selectedsong);
     console.log(this.appComponent.route);
     this.router.navigateByUrl('/playlist/add_to_playlist');

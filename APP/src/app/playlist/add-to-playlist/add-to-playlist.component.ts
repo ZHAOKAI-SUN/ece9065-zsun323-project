@@ -18,6 +18,8 @@ export class AddToPlaylistComponent implements OnInit {
   showSucessMessage: boolean;
   showFailedMessage: boolean;
   serverErrorMessages: string;
+  showSucessMessage2: boolean;
+  serverErrorMessages2: string;
   playlist : any;
   sbsong: any;
   sbplinfo: any;
@@ -40,6 +42,7 @@ export class AddToPlaylistComponent implements OnInit {
     )
   }
 
+  // Add to selected playlist
   choosethis(info){
     // Create JSON array
     this.sbplinfo = {
@@ -68,7 +71,46 @@ export class AddToPlaylistComponent implements OnInit {
           this.serverErrorMessages = 'We don\'t know what\'s wrong';
       }
     );
-    
+  }
+
+  // Create new playlist
+  onSubmit(form: NgForm) {
+    // Put global variables into form before form transfer
+    form.value.addname = this.appComponent.owner;
+    this.playlistService.createPlaylist(form.value).subscribe(
+      res => { // function 1
+        console.log(res);
+        this.showSucessMessage2 = true;
+        setTimeout(() => this.showSucessMessage2 = false, 6000);
+        this.resetForm(form);
+      },
+      err => { // function 2
+        if (err.status === 422) {
+          this.serverErrorMessages2 = err.error.join('<br/>');
+          setTimeout(() => this.serverErrorMessages2 = "", 6000);
+        }
+        else
+          this.serverErrorMessages2 = 'We don\'t know what\'s wrong';
+      }
+    );
+  }
+  resetForm(form: NgForm) {
+    this.playlistService.selectedPlaylist = {
+      pname: '',
+      description: '',
+      addname: '',
+      addtime: null,
+      status: '',
+      pname0addname: ''
+    };
+    form.resetForm();
+    this.serverErrorMessages2 = '';
+    this.ngOnInit();
+  }
+
+  // Back to the starting point
+  goback(){
+    this.router.navigate([this.appComponent.route]);
   }
 
 
