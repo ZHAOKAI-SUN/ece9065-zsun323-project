@@ -10,6 +10,7 @@
     
                         <thead>
                             <tr>
+                                <th>No.</th>
                                 <th>Title</th>
                                 <th>artist</th>
                                 <th>Add user</th>
@@ -21,6 +22,7 @@
     
                         <tbody>
                             <tr *ngFor="let index of this.songlist; let i = index">
+                                <td>{{i+1}}</td>
                                 <td>{{songlist[i].title}}</td>
                                 <td>{{songlist[i].artist}}</td>
                                 <td>{{songlist[i].addname}}</td>
