@@ -1,17 +1,19 @@
 <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
 
-    <input type="text" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="Email" [pattern]="emailRegex" required
-    [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }">
+    <input type="text" #email="ngModel" [(ngModel)]="model.email" name="email" placeholder="Email" required
+    [pattern]="emailRegex" [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }">
 
-    <div *ngIf="signInForm.submitted && email.errors?.pattern">
-      <label class="validation-message">Invalid email</label>
+    <div *ngIf="signInForm.submitted && email.errors">
+      <label *ngIf="email.errors.required" class="validation-message">This info is required</label>
+      <label *ngIf="email.errors.pattern" class="validation-message">Invalid email</label>
     </div>
 
     <input type="password" name="password" #password="ngModel" [(ngModel)]="model.password" placeholder="Password" required minlength="6"
     [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid }">
 
-    <div *ngIf="signInForm.submitted && password.errors?.minlength">
-      <label class="validation-message">At least 6 characters</label>
+    <div *ngIf="signInForm.submitted && password.errors">
+      <label *ngIf="password.errors.required" class="validation-message">This info is required</label>
+      <label *ngIf="password.errors.minlength" class="validation-message">At least 6 characters</label>
     </div>
 
     <input type="submit" value="LOG In">
