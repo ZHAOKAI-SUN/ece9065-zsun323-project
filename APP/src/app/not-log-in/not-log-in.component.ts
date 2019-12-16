@@ -15,7 +15,7 @@ export class NotLogInComponent implements OnInit {
   }
 
   onSubmit(){
-    this.router.navigateByUrl('/playlist/add_playlist');
+    this.router.navigateByUrl('/login');
   }
 
 }

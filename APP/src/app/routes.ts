@@ -64,10 +64,10 @@ export const appRoutes: Routes = [
             children: [{ path: '', component: AddReviewComponent, canActivate:[AuthGuard] }]}, // No access without login
 
     { path: 'playlist/add_playlist', component: PlaylistComponent,
-            children: [{ path: '', component: NewPlaylistComponent }]},
+            children: [{ path: '', component: NewPlaylistComponent, canActivate:[AuthGuard] }]},
 
     { path: 'playlist/my_playlist', component: PlaylistComponent,
-            children: [{ path: '', component: MyPlaylistComponent }]},
+            children: [{ path: '', component: MyPlaylistComponent, canActivate:[AuthGuard] }]},
 
     { path: 'playlist/search_playlist', component: PlaylistComponent,
             children: [{ path: '', component: SearchPlaylistComponent }]},
