@@ -65,4 +65,8 @@ export class PlaylistService {
     return this.http.post(environment.apiBaseUrl+'/plinfo/secure/createPlinfo',plinfo,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
   }
 
+  deletePlaylist(key){
+    return this.http.delete(environment.apiBaseUrl+'/plinfo/secure/'+key+'/deletePlinfo',this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
+  }
+
 }

@@ -20,6 +20,7 @@ export class DetailPlaylistComponent implements OnInit {
   plinfo: any;
   showSucessMessage: boolean;
   showFailedMessage: boolean;
+  serverErrorMessages: string;
 
   constructor(private songService: SongService, private userService: UserService, private playlistService: PlaylistService, private appComponent: AppComponent, private router : Router) { }
 
@@ -42,6 +43,27 @@ export class DetailPlaylistComponent implements OnInit {
         this.showFailedMessage = true;
       }
     )
+  }
+
+  remove(key) {
+    // Update playlist status
+    console.log(key.ID);
+    this.playlistService.deletePlaylist(key.ID).subscribe(
+      res => { // function 1
+        console.log("yes");
+        //this.showSucessMessage = true;
+        //setTimeout(() => this.showSucessMessage = false, 6000);
+        this.ngOnInit();
+      },
+      err => { // function 2
+        console.log("no");
+        if (err.status === 422) {
+          this.serverErrorMessages = err.error.join('<br/>');
+        }
+        else
+          this.serverErrorMessages = 'We don\'t know what\'s wrong';
+      }
+    );
   }
 
 }

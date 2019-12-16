@@ -12,6 +12,7 @@
                             <tr>
                                 <th>Song Title</th>
                                 <th>Song Artist</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
 
@@ -19,6 +20,14 @@
                             <tr *ngFor="let index of this.plinfo; let i = index">
                                 <td>{{plinfo[i].SONGname}}</td>
                                 <td>{{plinfo[i].SONGartist}}</td>
+                                <td>
+                                    <button (click)="infopage(song[i])" title="View details">
+                                        <img src="assets/image/information.png" height="25" width="25">
+                                    </button>
+                                    <button (click)="remove(plinfo[i])" title="Remove from list">
+                                        <img src="assets/image/delete.png" height="25" width="25">
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
     
