@@ -37,7 +37,11 @@ export class SongDetailComponent implements OnInit {
         this.showFailedMessage = true;
       }
     )
+  }
 
+  addtoplaylist(){
+    this.appComponent.route = 'songs/details_song';
+    this.router.navigateByUrl('/playlist/add_to_playlist');
   }
 
   onLogout(){
