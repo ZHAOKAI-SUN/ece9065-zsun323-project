@@ -1,5 +1,5 @@
 <header>
-    <div class="container">
+    <div class="container" *ngIf="godmode">
         <nav>
             <ul>
                 <li><a href="#" routerLink="/admin/user_management">User Management</a></li>
@@ -9,4 +9,4 @@
     </div>
 </header>
 
-        <router-outlet></router-outlet>
+        <router-outlet *ngIf="godmode"></router-outlet>

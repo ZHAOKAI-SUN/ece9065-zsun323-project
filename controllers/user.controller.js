@@ -97,3 +97,11 @@ module.exports.resend = (req, res, next) =>{
         res.send(info);
     });
 }
+
+// Read all user
+exports.user_read = function (req, res) {
+    User.find(function (err, user) {
+        if (err) return next(err);
+        res.send(user);
+    })
+};

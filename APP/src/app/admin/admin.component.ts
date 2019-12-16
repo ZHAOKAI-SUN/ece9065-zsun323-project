@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  godmode : boolean;
+
+  constructor(private appComponent: AppComponent) { }
 
   ngOnInit() {
+    this.godmode = this.appComponent.godmode;
   }
 
 }

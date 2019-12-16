@@ -43,7 +43,11 @@ export class UserService {
   // Resend verification email
   resend(form:NgForm) {
     return this.http.post(environment.apiBaseUrl + '/user/open/resend', form,this.noAuthHeader)
-    
+  }
+
+  // All user
+  allUser() {
+    return this.http.get(environment.apiBaseUrl + '/user/secure/readallUser');
   }
 
 

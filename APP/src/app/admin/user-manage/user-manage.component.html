@@ -1,1 +1,35 @@
-<p>user-manage works!</p>
+<div align="center">
+
+    <h1> Account List </h1>
+    
+    <ul>
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <table class="table table-striped">
+    
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Level</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            <tr *ngFor="let index of this.userlist; let i = index">
+                                <td>{{userlist[i]._id}}</td>
+                                <td>{{userlist[i].email}}</td>
+                                <td>{{userlist[i].status}}</td>
+                                <td>{{userlist[i].level}}</td>
+                            </tr>
+                        </tbody>
+    
+                    </table>
+                </div>
+            </div>
+        </div>
+    </ul>
+    
+</div>

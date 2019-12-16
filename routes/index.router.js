@@ -19,6 +19,7 @@ router.post     ('/user/open/authenticate', ctrlUser.authenticate);
 router.get      ('/user/secure/userProfile',jwtHelper.verifyJwtToken, ctrlUser.userProfile); // private route !!! add: verifyJwtToken !!!!!
 router.get      ('/user/open/activate/:token', ctrlUser.activateUser); // Activate email
 router.post     ('/user/open/resend', ctrlUser.resend);
+router.get      ('/user/secure/readallUser', ctrlUser.user_read); // read all user
 
 //// Song part
 // TEST
