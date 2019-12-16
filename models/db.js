@@ -10,3 +10,4 @@ require('./user.model');
 require('./song.model');
 require('./review.model');
 require('./playlist.model');
+require('./plinfo.model');

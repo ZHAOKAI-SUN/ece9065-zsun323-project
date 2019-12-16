@@ -8,6 +8,7 @@ const ctrlUser = require('../controllers/user.controller');
 const song_controller = require('../controllers/song.controller');
 const review_controller = require('../controllers/review.controller');
 const playlist_controller = require('../controllers/playlist.controller');
+const plinfo_controller = require('../controllers/plinfo.controller');
 
 
 ////// 2 : Add router path
@@ -64,6 +65,17 @@ router.get      ('/playlist/open/searchmyPlaylist/:id', playlist_controller.play
 router.put      ('/playlist/secure/:id/updatePlaylist', playlist_controller.playlist_update);
 // DELETE
 router.delete   ('/playlist/secure/:id/deletePlaylist', playlist_controller.playlist_delete);
+
+//// playlistinfo part
+// TEST
+router.get      ('/plinfo/open/testPlinfo', plinfo_controller.test);
+// CREATE
+router.post     ('/plinfo/secure/createPlinfo', plinfo_controller.plinfo_create);
+// SEARCH
+router.get      ('/plinfo/open/searchPlinfo/:id', plinfo_controller.plinfo_search);
+// DELETE
+router.delete   ('/plinfo/secure/:id/deletePlinfo', plinfo_controller.plinfo_delete);
+
 
 
 ////// Just keep it
