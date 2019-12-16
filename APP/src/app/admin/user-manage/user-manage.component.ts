@@ -43,7 +43,7 @@ export class UserManageComponent implements OnInit {
       alert('You are not authorized to change the status of the SUPER administrator !');
       return;
     }
-    // Update playlist status
+    // Update user
     this.userService.updateUser(i._id, this.newusers).subscribe(
       res => { // function 1
         console.log("1");
@@ -70,7 +70,61 @@ export class UserManageComponent implements OnInit {
       alert('You are not authorized to change the status of the SUPER administrator !');
       return;
     }
-    // Update playlist status
+    // Update user
+    this.userService.updateUser(i._id, this.newusers).subscribe(
+      res => { // function 1
+        console.log("1");
+        this.ngOnInit();
+      },
+      err => { // function 2
+        console.log("2");
+      }
+    );
+  }
+
+  changetoNormal(i){ // Use for jump
+    console.log(i._id);
+    this.newusers = {
+      "level" : "Normal"
+    }
+    if (i.email == this.appComponent.owner) {
+      console.log("can change yourself");
+      alert('You cannot change your own level !');
+      return;
+    }
+    if (i.email == "admin@uwo.ca") {
+      console.log("can change yourself");
+      alert('You are not authorized to change the level of the SUPER administrator !');
+      return;
+    }
+    // Update user
+    this.userService.updateUser(i._id, this.newusers).subscribe(
+      res => { // function 1
+        console.log("1");
+        this.ngOnInit();
+      },
+      err => { // function 2
+        console.log("2");
+      }
+    );
+  }
+
+  changetoAdmin(i){ // Use for jump
+    console.log(i._id);
+    this.newusers = {
+      "level" : "Admin"
+    }
+    if (i.email == this.appComponent.owner) {
+      console.log("can change yourself");
+      alert('You cannot change your own level !');
+      return;
+    }
+    if (i.email == "admin@uwo.ca") {
+      console.log("can change yourself");
+      alert('You are not authorized to change the level of the SUPER administrator !');
+      return;
+    }
+    // Update user
     this.userService.updateUser(i._id, this.newusers).subscribe(
       res => { // function 1
         console.log("1");

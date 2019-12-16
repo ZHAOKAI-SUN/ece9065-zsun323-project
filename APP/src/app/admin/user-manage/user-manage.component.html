@@ -35,7 +35,13 @@
                                 </td>
                                 <td>{{userlist[i].level}}</td>
                                 <td>
-                                    
+                                    <button (click)="changetoNormal(userlist[i])" title="Normal">
+                                        <img src="assets/image/US-Lnormal.png" height="25" width="25">
+                                    </button> To normal
+                                    <br>
+                                    <button (click)="changetoAdmin(userlist[i])" title="Admin">
+                                        <img src="assets/image/US-Ladmin.png" height="25" width="25">
+                                    </button> To admin
                                 </td>
                             </tr>
                         </tbody>
