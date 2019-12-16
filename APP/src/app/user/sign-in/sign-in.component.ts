@@ -13,6 +13,8 @@ import { AppComponent } from '../../app.component';
 })
 export class SignInComponent implements OnInit {
 
+  userDetails : any;
+
   constructor(private userService: UserService, private router : Router, private appComponent: AppComponent) { }
 
   model ={
@@ -36,6 +38,22 @@ export class SignInComponent implements OnInit {
         // Create global variable: owner
         this.appComponent.owner = this.model.email;
         console.log(this.appComponent.owner);
+        // After successful login, judge whether it is an administrator
+        this.userService.getUserProfile().subscribe(
+          res => {
+            this.userDetails = res['user'];   // After successful login, judge whether it is an administrator
+            console.log(this.userDetails.level);
+            if ( this.userDetails.level == "Admin" ) {
+              this.appComponent.godmode = true;
+            }
+            else {
+              this.appComponent.godmode = false;
+            }
+          },
+          err => { 
+            console.log(err);
+          }
+        );
       },
       err => {
         this.serverErrorMessages = err.error.message; // serverErrorMessages, related to HTML

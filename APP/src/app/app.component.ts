@@ -14,4 +14,5 @@ export class AppComponent {
   public route: String; // Departure path. Used to return back
   public selectedplaylist: JSON; // Selected playlist
   public showdplinfoelete: boolean; // In the details page playlist, can delete songs or not
+  public godmode: boolean; // Administrator or not
 }
