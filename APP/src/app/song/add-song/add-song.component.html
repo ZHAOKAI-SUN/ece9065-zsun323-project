@@ -3,7 +3,7 @@
 
 <form #addForm="ngForm" (ngSubmit)="addForm.valid && onSubmit(addForm)">
     
-    <h1> Add New Songs </h1>
+    <h1> Add New Song </h1>
 
     <input type="text" #title="ngModel" [(ngModel)]="songService.selectedSong.title" name="title" placeholder="Title"
     maxlength="30" required [ngClass]="{'invalid-textbox' :addForm.submitted && !title.valid }">
