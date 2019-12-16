@@ -23,10 +23,17 @@
                                 <td>{{playlist[i].Pname}}</td>
                                 <td>{{playlist[i].Description}}</td>
                                 <td>{{playlist[i].Addtime}}</td>
-                                <td>{{playlist[i].Status}}</td>
+                                <td>{{playlist[i].Status}}
+                                    <button (click)="changestatus(playlist[i])" title="Change Status">
+                                        <img src="assets/image/changestatus.png" height="25" width="25">
+                                    </button>
+                                </td>
                                 <td>
                                     <button (click)="infopage(playlist[i])" title="View details">
                                         <img src="assets/image/information.png" height="25" width="25">
+                                    </button>
+                                    <button (click)="edit(playlist[i])" title="Edit info">
+                                        <img src="assets/image/edit.png" height="25" width="25">
                                     </button>
                                 </td>
                             </tr>

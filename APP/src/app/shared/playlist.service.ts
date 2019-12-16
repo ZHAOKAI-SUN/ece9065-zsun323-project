@@ -43,4 +43,8 @@ export class PlaylistService {
     return this.http.get(environment.apiBaseUrl+'/playlist/open/searchPlaylist/'+key,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
   }
 
+  updatePlaylist(key, playlist: Playlist){
+    return this.http.put(environment.apiBaseUrl+'/playlist/secure/'+key+'/updatePlaylist',playlist,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
+  }
+
 }

@@ -17,8 +17,10 @@ export class MyPlaylistComponent implements OnInit {
 
   showSucessMessage: boolean;
   showFailedMessage: boolean;
+  serverErrorMessages: string;
 
   playlist : any;
+  newstatus : any;
 
   constructor(private songService: SongService, private userService: UserService, private playlistService: PlaylistService, private appComponent: AppComponent, private router : Router) { }
 
@@ -46,5 +48,31 @@ export class MyPlaylistComponent implements OnInit {
   infopage(i){ // Use for jump
     console.log(i);
   }
+
+  changestatus(i){ // Use for jump
+
+    // Judge the current state and change to the opposite
+    if (i.Status == "Private") {
+      this.newstatus = {
+        "status" : "Public"
+      }
+    } else {
+      this.newstatus = {
+        "status" : "Private"
+      }
+    }
+    // Update playlist status
+    this.playlistService.updatePlaylist(i.ID, this.newstatus).subscribe(
+      res => { // function 1
+        console.log("1");
+        this.ngOnInit();
+      },
+      err => { // function 2
+        console.log("2");
+      }
+    );
+  }
+
+
 
 }
