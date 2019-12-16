@@ -131,7 +131,7 @@ exports.playlist_update = function (req, res) {
         }
         else {
             if (err.code == 11000)
-                res.status(422).send(['This song already exists in this playlist!']);
+                res.status(422).send(['You already have a playlist with the same name!']);
             else
                 return next(err);
             }

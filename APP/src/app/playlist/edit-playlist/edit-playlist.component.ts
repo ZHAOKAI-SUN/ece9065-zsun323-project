@@ -36,6 +36,9 @@ export class EditPlaylistComponent implements OnInit {
     if ( form.value.description == "") {
       form.value.description = this.editplaylist.Description;
     };
+
+    form.value.pname0addname= form.value.pname+"0"+this.appComponent.owner;
+
     // Update playlist status
     this.playlistService.updatePlaylist(this.editplaylist.ID, form.value).subscribe(
       res => { // function 1
