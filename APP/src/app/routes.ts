@@ -21,6 +21,7 @@ import { NewPlaylistComponent } from './playlist/new-playlist/new-playlist.compo
 import { MyPlaylistComponent } from './playlist/my-playlist/my-playlist.component';
 import { SearchPlaylistComponent } from './playlist/search-playlist/search-playlist.component';
 import { DetailPlaylistComponent } from './playlist/detail-playlist/detail-playlist.component';
+import { EditPlaylistComponent } from './playlist/edit-playlist/edit-playlist.component'; 
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -74,5 +75,8 @@ export const appRoutes: Routes = [
 
     { path: 'playlist/details_playlist', component: PlaylistComponent,
             children: [{ path: '', component: DetailPlaylistComponent }]},
+
+    { path: 'playlist/edit_playlist', component: PlaylistComponent,
+            children: [{ path: '', component: EditPlaylistComponent }]},
 
 ];

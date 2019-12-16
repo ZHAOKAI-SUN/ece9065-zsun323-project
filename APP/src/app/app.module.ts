@@ -25,6 +25,7 @@ import { NewPlaylistComponent } from './playlist/new-playlist/new-playlist.compo
 import { MyPlaylistComponent } from './playlist/my-playlist/my-playlist.component';
 import { SearchPlaylistComponent } from './playlist/search-playlist/search-playlist.component';
 import { DetailPlaylistComponent } from './playlist/detail-playlist/detail-playlist.component';
+import { EditPlaylistComponent } from './playlist/edit-playlist/edit-playlist.component'; 
 
 // Routes
 import { appRoutes } from './routes';
@@ -70,7 +71,8 @@ export function provideConfig() {
     NewPlaylistComponent,
     MyPlaylistComponent,
     SearchPlaylistComponent,
-    DetailPlaylistComponent
+    DetailPlaylistComponent,
+    EditPlaylistComponent
   ],//STOP
   imports: [    //// imports start
     BrowserModule,

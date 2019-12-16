@@ -73,6 +73,11 @@ export class MyPlaylistComponent implements OnInit {
     );
   }
 
+  edit(i){ // Use for jump
+    console.log(i);
+    this.router.navigateByUrl('/playlist/edit_playlist');
+  }
+
 
 
 }
