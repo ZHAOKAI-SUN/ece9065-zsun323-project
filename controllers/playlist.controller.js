@@ -126,10 +126,21 @@ module.exports.playlist_searchmy = (req, res, next) => {
 // UPDATE
 exports.playlist_update = function (req, res) {
     Playlist.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, playlist) {
-        if (err) return next(err);
-        res.status(200).send(['Playlist udpated.']);
+        if (!err) {
+            res.status(200).send(['Playlist udpated.']);
+        }
+        else {
+            if (err.code == 11000)
+                res.status(422).send(['This song already exists in this playlist!']);
+            else
+                return next(err);
+            }
     });
 };
+
+
+
+
 
 // DELETE
 exports.playlist_delete = function (req, res) {

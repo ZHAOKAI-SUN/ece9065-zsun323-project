@@ -25,7 +25,8 @@ import { NewPlaylistComponent } from './playlist/new-playlist/new-playlist.compo
 import { MyPlaylistComponent } from './playlist/my-playlist/my-playlist.component';
 import { SearchPlaylistComponent } from './playlist/search-playlist/search-playlist.component';
 import { DetailPlaylistComponent } from './playlist/detail-playlist/detail-playlist.component';
-import { EditPlaylistComponent } from './playlist/edit-playlist/edit-playlist.component'; 
+import { EditPlaylistComponent } from './playlist/edit-playlist/edit-playlist.component';
+import { AddToPlaylistComponent } from './playlist/add-to-playlist/add-to-playlist.component';
 
 // Routes
 import { appRoutes } from './routes';
@@ -35,7 +36,7 @@ import { SongService } from './shared/song.service';
 // Other
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'ng4-social-login'; // 3rd log in
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'ng4-social-login';// 3rd log in
 
 //3 party
 const config = new AuthServiceConfig([
@@ -72,7 +73,8 @@ export function provideConfig() {
     MyPlaylistComponent,
     SearchPlaylistComponent,
     DetailPlaylistComponent,
-    EditPlaylistComponent
+    EditPlaylistComponent,
+    AddToPlaylistComponent
   ],//STOP
   imports: [    //// imports start
     BrowserModule,

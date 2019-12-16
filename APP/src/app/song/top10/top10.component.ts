@@ -49,4 +49,12 @@ export class TOP10Component implements OnInit {
     this.router.navigateByUrl('/songs/add_review');
   }
 
+  addtoplaylist(info){ // Use for jump
+    this.appComponent.selectedsong = info;
+    this.appComponent.route = 'songs/TOP10';
+    console.log(this.appComponent.selectedsong);
+    console.log(this.appComponent.route);
+    this.router.navigateByUrl('/playlist/add_to_playlist');
+  }
+
 }

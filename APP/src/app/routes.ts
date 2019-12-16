@@ -21,7 +21,8 @@ import { NewPlaylistComponent } from './playlist/new-playlist/new-playlist.compo
 import { MyPlaylistComponent } from './playlist/my-playlist/my-playlist.component';
 import { SearchPlaylistComponent } from './playlist/search-playlist/search-playlist.component';
 import { DetailPlaylistComponent } from './playlist/detail-playlist/detail-playlist.component';
-import { EditPlaylistComponent } from './playlist/edit-playlist/edit-playlist.component'; 
+import { EditPlaylistComponent } from './playlist/edit-playlist/edit-playlist.component';
+import { AddToPlaylistComponent } from './playlist/add-to-playlist/add-to-playlist.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -65,10 +66,10 @@ export const appRoutes: Routes = [
             children: [{ path: '', component: AddReviewComponent, canActivate:[AuthGuard] }]}, // No access without login
 
     { path: 'playlist/add_playlist', component: PlaylistComponent,
-            children: [{ path: '', component: NewPlaylistComponent, canActivate:[AuthGuard] }]},
+            children: [{ path: '', component: NewPlaylistComponent, canActivate:[AuthGuard] }]}, // No access without login
 
     { path: 'playlist/my_playlist', component: PlaylistComponent,
-            children: [{ path: '', component: MyPlaylistComponent, canActivate:[AuthGuard] }]},
+            children: [{ path: '', component: MyPlaylistComponent, canActivate:[AuthGuard] }]}, // No access without login
 
     { path: 'playlist/search_playlist', component: PlaylistComponent,
             children: [{ path: '', component: SearchPlaylistComponent }]},
@@ -77,6 +78,9 @@ export const appRoutes: Routes = [
             children: [{ path: '', component: DetailPlaylistComponent }]},
 
     { path: 'playlist/edit_playlist', component: PlaylistComponent,
-            children: [{ path: '', component: EditPlaylistComponent }]},
+            children: [{ path: '', component: EditPlaylistComponent, canActivate:[AuthGuard] }]}, // No access without login
+
+    { path: 'playlist/add_to_playlist', component: PlaylistComponent,
+            children: [{ path: '', component: AddToPlaylistComponent, canActivate:[AuthGuard] }]}, // No access without login
 
 ];

@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 
 // Step 2: add model to service
 import { Playlist } from './playlist.model';
+import { Plinfo } from './playlist.model';
 import { NgForm } from '@angular/forms';
 
 @Injectable({
@@ -22,6 +23,15 @@ export class PlaylistService {
     addname: '',
     addtime: null,
     status: '',
+    pname0addname: ''
+  };
+
+  selectedPlinfo: Plinfo = {
+    plid: '',
+    plname: '',
+    songid: '',
+    songname: '',
+    songartist: '',
     pname0addname: ''
   };
 
@@ -49,6 +59,10 @@ export class PlaylistService {
 
   searchPLinfo(key){ // Use playlist ID to search playlist-info
     return this.http.get(environment.apiBaseUrl+'/plinfo/open/searchPlinfo/'+key,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
+  }
+
+  createPLinfo(plinfo: Plinfo){
+    return this.http.post(environment.apiBaseUrl+'/plinfo/secure/createPlinfo',plinfo,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
   }
 
 }
