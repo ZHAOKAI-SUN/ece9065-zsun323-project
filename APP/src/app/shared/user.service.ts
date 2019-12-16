@@ -50,6 +50,10 @@ export class UserService {
     return this.http.get(environment.apiBaseUrl + '/user/secure/readallUser');
   }
 
+  // Update user
+  updateUser(key, user: User){
+    return this.http.put(environment.apiBaseUrl+'/user/secure/'+key+'/updateUser',user,this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
+  }
 
 ////// Helper Methods //////
 

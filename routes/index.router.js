@@ -20,6 +20,7 @@ router.get      ('/user/secure/userProfile',jwtHelper.verifyJwtToken, ctrlUser.u
 router.get      ('/user/open/activate/:token', ctrlUser.activateUser); // Activate email
 router.post     ('/user/open/resend', ctrlUser.resend);
 router.get      ('/user/secure/readallUser', ctrlUser.user_read); // read all user
+router.put      ('/user/secure/:id/updateUser', ctrlUser.user_update); // update user
 
 //// Song part
 // TEST

@@ -13,7 +13,9 @@
                                 <th>ID</th>
                                 <th>Email</th>
                                 <th>Status</th>
+                                <th>Action</th>
                                 <th>Level</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
     
@@ -22,7 +24,19 @@
                                 <td>{{userlist[i]._id}}</td>
                                 <td>{{userlist[i].email}}</td>
                                 <td>{{userlist[i].status}}</td>
+                                <td>
+                                    <button (click)="changetoActivate(userlist[i])" title="Activate">
+                                        <img src="assets/image/US-Normal.png" height="25" width="25">
+                                    </button> Activate
+                                    <br>
+                                    <button (click)="changetoLock(userlist[i])" title="Lock">
+                                        <img src="assets/image/US-Locked.png" height="25" width="25">
+                                    </button> Lock
+                                </td>
                                 <td>{{userlist[i].level}}</td>
+                                <td>
+                                    
+                                </td>
                             </tr>
                         </tbody>
     

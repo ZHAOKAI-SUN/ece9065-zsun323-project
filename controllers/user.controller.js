@@ -105,3 +105,11 @@ exports.user_read = function (req, res) {
         res.send(user);
     })
 };
+
+// UPDATE
+exports.user_update = function (req, res) {
+    User.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, user) {
+        if (err) return next(err);
+        res.status(200).send(['User udpated.']);
+    });
+};
