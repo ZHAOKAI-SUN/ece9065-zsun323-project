@@ -49,6 +49,7 @@ export class MyPlaylistComponent implements OnInit {
     console.log("jump to info");
     this.appComponent.selectedplaylist = i;
     this.router.navigateByUrl('playlist/details_playlist');
+    this.appComponent.showdplinfoelete = true; // Allow deletion if from "My Playlist"
   }
 
   changestatus(i){ // Use for jump

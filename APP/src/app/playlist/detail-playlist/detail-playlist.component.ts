@@ -21,6 +21,7 @@ export class DetailPlaylistComponent implements OnInit {
   showSucessMessage: boolean;
   showFailedMessage: boolean;
   serverErrorMessages: string;
+  showdelete: boolean;
 
   constructor(private songService: SongService, private userService: UserService, private playlistService: PlaylistService, private appComponent: AppComponent, private router : Router) { }
 
@@ -28,6 +29,7 @@ export class DetailPlaylistComponent implements OnInit {
     // get current user and current playlist
     this.sbuser = this.appComponent.owner;
     this.sbplaylist = this.appComponent.selectedplaylist;
+    this.showdelete = this.appComponent.showdplinfoelete; // show the delete icon or not
     console.log(this.sbuser);
     console.log(this.sbplaylist);
 

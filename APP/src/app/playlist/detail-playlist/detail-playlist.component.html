@@ -24,7 +24,7 @@
                                     <button (click)="infopage(song[i])" title="View details">
                                         <img src="assets/image/information.png" height="25" width="25">
                                     </button>
-                                    <button (click)="remove(plinfo[i])" title="Remove from list">
+                                    <button (click)="remove(plinfo[i])" title="Remove from list" *ngIf="showdelete">
                                         <img src="assets/image/delete.png" height="25" width="25">
                                     </button>
                                 </td>

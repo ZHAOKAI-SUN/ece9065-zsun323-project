@@ -13,4 +13,5 @@ export class AppComponent {
   public selectedsong: JSON; // Selected songs in TOP10, search, etc.
   public route: String; // Departure path. Used to return back
   public selectedplaylist: JSON; // Selected playlist
+  public showdplinfoelete: boolean; // In the details page playlist, can delete songs or not
 }
