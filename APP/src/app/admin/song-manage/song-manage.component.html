@@ -1,1 +1,47 @@
-<p>song-manage works!</p>
+<div align="center">
+
+    <h1> Song List </h1>
+    
+    <ul>
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <table class="table table-striped">
+    
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>artist</th>
+                                <th>Add user</th>
+                                <th>Add time</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            <tr *ngFor="let index of this.songlist; let i = index">
+                                <td>{{songlist[i].title}}</td>
+                                <td>{{songlist[i].artist}}</td>
+                                <td>{{songlist[i].addname}}</td>
+                                <td>{{songlist[i].addtime}}</td>
+                                <td>{{songlist[i].status}}</td>
+                                <td>
+                                    <button (click)="changetoNormal(songlist[i])" title="Normal">
+                                        <img src="assets/image/US-Normal.png" height="25" width="25">
+                                    </button> To Normal
+                                    <br>
+                                    <button (click)="changetoHidden(songlist[i])" title="Hidden">
+                                        <img src="assets/image/US-Locked.png" height="25" width="25">
+                                    </button> To Hidden
+                                </td>
+                            </tr>
+                        </tbody>
+    
+                    </table>
+                </div>
+            </div>
+        </div>
+    </ul>
+    
+</div>
