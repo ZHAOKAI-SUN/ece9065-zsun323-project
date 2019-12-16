@@ -46,7 +46,9 @@ export class MyPlaylistComponent implements OnInit {
   }
 
   infopage(i){ // Use for jump
-    console.log(i);
+    console.log("jump to info");
+    this.appComponent.selectedplaylist = i;
+    this.router.navigateByUrl('playlist/details_playlist');
   }
 
   changestatus(i){ // Use for jump
