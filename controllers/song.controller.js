@@ -160,6 +160,6 @@ exports.song_update = function (req, res) {
 exports.song_delete = function (req, res) {
     Song.findByIdAndRemove(req.params.id, function (err) {
         if (err) return next(err);
-        res.send('Deleted successfully!');
+        res.status(200).send(['Deleted successfully!']);
     })
 };

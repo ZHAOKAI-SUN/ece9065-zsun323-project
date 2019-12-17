@@ -79,5 +79,9 @@ export class SongService {
     return this.http.get(environment.apiBaseUrl + '/song/open/readallSong');
   }
 
+  deletesong(key){
+    return this.http.delete(environment.apiBaseUrl+'/song/secure/'+key+'/deleteSong',this.noAuthHeader); // No need to authorize access, add: this.noAuthHeader !!!!!!!!!
+  }
+
 
 }

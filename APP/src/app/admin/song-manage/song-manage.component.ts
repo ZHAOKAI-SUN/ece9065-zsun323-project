@@ -62,4 +62,18 @@ export class SongManageComponent implements OnInit {
     );
   }
 
+  deletesong(i) {
+    console.log(i._id);
+    // Update user
+    this.songService.deletesong(i._id).subscribe(
+      res => { // function 1
+        console.log("1");
+        this.ngOnInit();
+      },
+      err => { // function 2
+        console.log("2");
+      }
+    );
+  }
+
 }
