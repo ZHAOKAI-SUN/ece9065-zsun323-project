@@ -20,6 +20,8 @@ export class AddToPlaylistComponent implements OnInit {
   serverErrorMessages: string;
   showSucessMessage2: boolean;
   serverErrorMessages2: string;
+  showSucessMessage3: boolean;
+  showFailedMessage3: boolean;
   playlist : any;
   sbsong: any;
   sbplinfo: any;
@@ -36,8 +38,16 @@ export class AddToPlaylistComponent implements OnInit {
       res => { // function 1
         this.playlist = res;
         console.log(this.playlist);
+        this.showSucessMessage3 = true;
+        this.showFailedMessage3 = false;
+        console.log('true');
+        console.log(this.showSucessMessage3);
       },
       err => { // function 2
+        this.showSucessMessage3 = false;
+        this.showFailedMessage3 = true;
+        console.log('false');
+        console.log(this.showSucessMessage3);
       }
     )
   }
