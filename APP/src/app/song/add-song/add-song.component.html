@@ -40,7 +40,7 @@
 
 
     <input type="text" #comment="ngModel" [(ngModel)]="songService.selectedSong.comment" name="comment" placeholder="Comment"
-    maxlength="28" [ngClass]="{'invalid-textbox' :addForm.submitted && !comment.valid }">
+    maxlength="200" [ngClass]="{'invalid-textbox' :addForm.submitted && !comment.valid }">
 
     <div *ngIf="addForm.submitted && comment.errors">
         <label *ngIf="comment.errors.maxlength" class="validation-message">At most 28 characters</label>

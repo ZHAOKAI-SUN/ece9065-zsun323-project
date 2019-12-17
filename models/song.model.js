@@ -29,7 +29,7 @@ var songSchema = new mongoose.Schema({
     comment: {
         type: String,
         // required: 'song comment can\'t be empty',      // Not required
-        maxlength: [28, 'Song comment is up to 28 character!']
+        maxlength: [200, 'Song comment is up to 200 character!']
     },
     reserve: {
         type: String,
